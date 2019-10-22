@@ -1,0 +1,122 @@
+HIST_STAMPS="yyyy-mm-dd"
+
+# vim keybindings on the prompt
+set -o vi
+
+# preventing that a Ctrl-D (EOF) exits the shell
+# https://unix.stackexchange.com/questions/110240/why-does-ctrl-d-eof-exit-the-shell
+# set -o ignoreeof
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# History
+# https://wiki.archlinux.org/index.php/Bash#History
+export HISTCONTROL=ignoredups
+
+# liquidprompt
+# https://github.com/nojhan/liquidprompt
+# Only load Liquid Prompt in interactive shells, not from a script or from scp
+LIQUID_PROMPT_FILE="$HOME/git/laptop/liquidprompt/liquidprompt"
+if [[ $- = *i* ]] && [[ -r $LIQUID_PROMPT_FILE ]]; then source $LIQUID_PROMPT_FILE; fi
+
+# fzf
+# https://github.com/junegunn/fzf
+export FZF_DEFAULT_COMMAND='fd -a'
+export FZF_DEFAULT_OPTS="--no-sort --no-mouse --color=dark --tabstop=4"
+
+# QT-5
+# https://wiki.archlinux.org/index.php/qt#Configuration_of_Qt5_apps_under_environments_other_than_KDE_Plasma
+export QT_QPA_PLATFORMTHEME="qt5ct"
+
+# JAVA (e' un link alla jdk da utilizzare)
+# https://wiki.archlinux.org/index.php/Java#Non-reparenting_window_managers
+# moved in ~/.xinitrc
+#export _JAVA_AWT_WM_NONREPARENTING=1
+#export _JAVA_OPTIONS='...stuff...'
+export JAVA_HOME=$HOME/opt/jdk
+export PATH=$PATH:$JAVA_HOME/bin
+
+# DOTNET
+export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+
+# ANDROID
+export ANDROID_HOME=$HOME/opt/android-sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_SDK_PATH=$ANDROID_HOME
+export ANDROID_NDK_PATH=$ANDROID_HOME/ndk-bundle
+# https://wiki.archlinux.org/index.php/android#libGL_error:_failed_to_load_driver:_swrast_OR_AVD_doesn.27t_load_and_no_error_message_displayed
+export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+
+# FASTLANE
+#export PATH="$HOME/.fastlane/bin:$PATH"
+
+# NGROK
+export PATH=$PATH:$HOME/opt/ngrok
+
+# VIRTUALENVWRAPPER
+# https://virtualenvwrapper.readthedocs.io/en/latest/install.html
+#export WORKON_HOME=$HOME/.virtualenvs
+#source /usr/bin/virtualenvwrapper_lazy.sh
+
+# GOLANG
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
+# RUBY GEMS
+export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
+
+# SURFRAW
+export PATH=$PATH:/usr/lib/surfraw
+export SURFRAW_graphical_browser=firefox
+export SURFRAW_text_browser=w3m
+export SURFRAW_graphical=no
+export SURFRAW_new_screen=yes
+
+# autojump
+AUTOJUMP_BASH=/etc/profile.d/autojump.bash
+test -r ${AUTOJUMP_BASH} && . ${AUTOJUMP_BASH}
+
+# v
+# https://github.com/rupa/v.git
+#test -r ${HOME}/git/laptop/v/v && export PATH="${PATH}:${HOME}/git/laptop/v"
+
+# megacmd
+# https://mega.nz/cmd
+# https://github.com/meganz/megacmd
+# export PATH="$PATH:$HOME/opt/megacmd/usr/bin"
+
+# megasync
+# export PATH="$PATH:$HOME/opt/megasync/usr/bin"
+
+# gopass completion
+# generated with `gopass completion bash`
+_gopass_bash_autocomplete() {
+    local cur opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts=$( ${COMP_WORDS[@]:0:$COMP_CWORD} --generate-bash-completion )
+    local IFS=$'\n'
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -F _gopass_bash_autocomplete gopass
+
+# ALIASES
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+
+# MISC
+export PATH=$HOME/bin:$HOME/bin-utilities:$PATH
+export EDITOR=vim
+export XDG_CONFIG_DIR=$HOME/.config
+
+# UTILITIES
+
+## xfreerdp
+XFREERDP_OPTS="/cert-ignore /admin /network:auto -grab-keyboard -themes -wallpaper /workarea /dynamic-resolution"
+export XFREERDP_OPTS="$XFREERDP_OPTS -decorations +clipboard /bpp:16 /scale:180 /audio-mode:2 /compression-level:2 /codec-cache:jpeg"
+
+
+# KEYS
+
+test ~/.bashrc_keys && . ~/.bashrc_keys

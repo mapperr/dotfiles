@@ -1,0 +1,8 @@
+# Increase backlight
+"xbacklight -inc 5 && notify-send -u low `xbacklight -get`"
+   XF86MonBrightnessUp
+
+# Decrease backlight
+"xbacklight -dec 5 && notify-send -u low `xbacklight -get`"
+   XF86MonBrightnessDown
+

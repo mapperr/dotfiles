@@ -1,0 +1,23 @@
+[user]
+	name = mapperr
+	email = michelangeloperrotta@gmail.com
+
+[credential]
+	helper = store
+	
+[push]
+    default = simple
+	
+[alias]
+	ss = status
+	aa = add -A
+	bb = branch
+	pp = !git pull && git push
+	ci = commit
+	co = checkout
+	sv = !git svn rebase && git svn dcommit
+	ll = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %C(green)(%cr) %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s%Creset'
+	
+[gui]
+	fontui = -family \"Source Code Pro\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Source Code Pro\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0

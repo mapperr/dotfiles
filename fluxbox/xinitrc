@@ -1,0 +1,39 @@
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME $HOME/.Xresources
+
+# serve per rendere disponibili i vari compilati, tipo slstatus
+export PATH="$HOME/bin:$HOME/bin-utilities:$PATH"
+
+# gnome keyring
+# https://wiki.archlinux.org/index.php/GNOME/Keyring#Use_Without_Gnome
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
+# non fa funzionare bene la clipboard in alcuni programmi
+#parcellite >/dev/null &
+
+volumeicon >/dev/null &
+#slstatus >/dev/null &
+
+# redshift
+# https://wiki.archlinux.org/index.php/Redshift
+redshift-gtk -t 6500:3000 &>/dev/null || redshift-gtk -t 6500:3000 -l 12:42 &>/dev/null &
+
+# cleaning sxiv thumbnail cache
+[[ -d $HOME/.cache/sxiv ]] && rm -rf $HOME/.cache/sxiv/*
+
+# https://wiki.archlinux.org/index.php/Java#Non-reparenting_window_managers
+#export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dsun.java2d.opengl=true -Djdk.gtk.version=3 -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
+# fix blank window in java applications
+# https://blog.darknedgy.net/technology/2014/08/27/1/
+#wmname LG3D
+
+# compton (composition manager)
+#compton -bcCGf --backend glx --vsync opengl-swc --sw-opti
+
+# wallpaper
+feh -z --bg-fill ${HOME}/ent/wallpapers/* &
+
+exec fluxbox
