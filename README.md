@@ -7,5 +7,18 @@ like this:
 
 `./dotfiles fluxbox`
 
-it will link `default`, then `secrets` and then the `fluxbox` directory, overriding existing links.
+It will link `default`, then `secrets` and then the `fluxbox` directory, overriding existing links.
+
+
+It works with directories too:
+
+`default/.config/rofi/config.rasi` will be linked to `$HOME/.config/rasi/config.rasi`
+
+If the path does not exits it will mkdir it for you.
+
+If something that is not a link exists it will ask nicely what to do.
+
+
+As for now, there no merging of default and overrides files:
+it seems a pain in the ass to me, with only a little gain.
 
