@@ -27,6 +27,9 @@ st -e screen >/dev/null &
 # notification server, works with dbus and libnotify
 dunst >/dev/null &
 
+# eventually run megasync
+hash megasync && megasync >/dev/null &
+
 # bluetooth manager, works with bluez
 blueman-applet >/dev/null &
 
@@ -70,17 +73,17 @@ docker-prune-notag-images.sh >~/.docker-prune.log 2>&1 &
 # to kill X11 use `killall xinit`
 while true; do
 	if [[ -x ~/bin/dwm ]]; then
-		if [[ -r ~/bin/dwm-new ]]; then
-			mv ~/bin/dwm-new ~/bin/dwm
-		fi
-		if [[ -r ~/bin/dwm_new ]]; then
+        if [[ -r ~/bin/dwm-new ]]; then
+            mv ~/bin/dwm-new ~/bin/dwm
+        fi
+        if [[ -r ~/bin/dwm_new ]]; then
              mv ~/bin/dwm_new ~/bin/dwm
         fi
         if [[ -r ~/bin/dwm_ ]]; then
              mv ~/bin/dwm_ ~/bin/dwm
         fi
-	    ~/bin/dwm 2> $HOME/.dwm.log
+        ~/bin/dwm 2> $HOME/.dwm.log
 	else
-	    dwm 2> $HOME/.dwm.log
+        dwm 2> $HOME/.dwm.log
 	fi
 done

@@ -75,6 +75,20 @@ set number
 " https://stackoverflow.com/a/1878983/1407614
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
+"Cursor settings:
+"  1 -> blinking block
+"  2 -> solid block
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
+
+
 " NERDTree
 " map <F2> :NERDTreeToggle<CR>
 
