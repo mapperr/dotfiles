@@ -119,4 +119,4 @@ export XFREERDP_OPTS="$XFREERDP_OPTS -decorations +clipboard /bpp:16 /scale:180 
 
 # KEYS
 
-test ~/.bashrc_keys && . ~/.bashrc_keys
+test -r ~/.bashrc_keys && . ~/.bashrc_keys
