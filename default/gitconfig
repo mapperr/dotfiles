@@ -13,6 +13,7 @@
 	aa = add -A
 	bb = branch
 	pp = !git pull && git push
+	ca = !git add -A && git commit
 	ci = commit
 	co = checkout
 	sv = !git svn rebase && git svn dcommit
