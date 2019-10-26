@@ -118,5 +118,6 @@ export XFREERDP_OPTS="$XFREERDP_OPTS -decorations +clipboard /bpp:16 /scale:180 
 
 
 # KEYS
+ENVKEYS_DIR="$HOME/.keys"
+test -r "$ENVKEYS_DIR/bashrc_keys" && . "$ENVKEYS_DIR/bashrc_keys"
 
-test -r ~/.bashrc_keys && . ~/.bashrc_keys
