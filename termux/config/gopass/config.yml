@@ -1,0 +1,18 @@
+root:
+  askformore: false
+  autoclip: true
+  autoimport: true
+  autosync: false
+  check_recipient_hash: false
+  cliptimeout: 45
+  concurrency: 1
+  editrecipients: false
+  nocolor: false
+  noconfirm: false
+  nopager: false
+  notifications: true
+  path: gpgcli-gitcli-fs+file:///data/data/com.termux/files/home/.password-store
+  recipient_hash: {}
+  safecontent: false
+  usesymbols: false
+mounts: {}
