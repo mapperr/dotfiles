@@ -1,0 +1,81 @@
+#! /bin/bash
+
+choiceusb="$1"
+choicevm="$2"
+detach="$3"
+
+chosen_vm="$choicevm"
+chosen_usb=""
+
+choice_made=0
+if [ -z "$choicevm" ] || [ -z "$choiceusb" ]; then
+	choice_made=""
+fi
+
+is_uuid(){
+	local input="$1"
+	[ -z "$input" ] && return 2
+
+	echo "$input" | grep -o "[0-9a-z]\{8\}\-[0-9a-z]\{4\}\-[0-9a-z]\{4\}\-[0-9a-z]\{4\}\-[0-9a-z]\{12\}" >/dev/null
+	return $?
+}
+
+
+
+test -z "$choice_made" && echo "virtual machines:"
+test -z "$choice_made" && vboxmanage list vms
+
+test -z "$choice_made" && echo ""
+test -z "$choice_made" && echo "usb devices on the host:"
+
+device_infos=`vboxmanage list usbhost | grep -e "UUID: " -e "Product: " | awk '{$1=""; print $0}' | sed 's/ /_/g' | sed 's/^_//g'`
+
+counter=1
+prevline=""
+for currline in $device_infos; do
+
+	# first element
+	if [ -z "$prevline" ]; then
+		
+		# first element is not an UUID
+		if ! is_uuid "$currline"; then
+			echo "something wrong about this output:"
+			echo "$device_infos"
+			exit 1
+		fi
+	
+	# n-th element
+	else
+
+		if is_uuid "$prevline" && ! is_uuid "$currline"; then
+			test -z "$choice_made" && echo "$counter - $prevline $currline"
+			
+			if [ ! -z "$choice_made" ] && [ $counter -eq $choiceusb ]; then
+				chosen_usb="$prevline"
+				break
+			fi
+
+			counter=`expr $counter + 1`
+		fi
+
+	fi
+
+	prevline="$currline"
+
+done
+
+
+if [ ! -z "$choice_made" ]; then
+	if [ "$detach" = "detach" ]; then
+		vboxmanage controlvm "$chosen_vm" usbdetach $chosen_usb
+	else
+		vboxmanage controlvm "$chosen_vm" usbattach $chosen_usb
+	fi
+else
+	test -z "$choice_made" && cat <<EOF
+
+usage:
+$0 <usb device number> <virtual machine name> - attach usb to vm
+$0 <usb device number> <virtual machine name> detach - detach usb from vm
+EOF
+fi

@@ -1,0 +1,17 @@
+#! /bin/bash
+
+value="$1"
+factor="9"
+
+if [ -z "$value" ] || [ $value -gt $factor ] || [ $value -lt 1 ]; then
+	echo "usage: $0 <value, from 1 to $factor>"
+	exit 1
+fi
+
+max_brightness=`cat /sys/class/backlight/intel_backlight/max_brightness`
+
+factored_value=`expr $max_brightness / $factor`
+actual_value=`expr $factored_value \* $value`
+
+sudo -n sh -c "echo '$actual_value' > /sys/class/backlight/intel_backlight/brightness"
+

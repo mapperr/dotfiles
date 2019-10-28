@@ -1,0 +1,46 @@
+#! /bin/bash
+
+box="$1"
+alternatecmd="$2"
+shift
+cmd="$@"
+
+basepath="$HOME/vagrantboxes"
+
+
+if [ "$box" = "list" ]; then
+    ls -1 $basepath
+    exit 0
+fi
+
+if [ "$alternatecmd" = "edit" ]; then
+    vim $basepath/$box/Vagrantfile
+    exit 0
+fi
+
+if [ -z "$XFREERDP_OPTS" ]; then
+    XFREERDP_OPTS="/cert-ignore /admin /network:auto -grab-keyboard -themes -wallpaper"
+    XFREERDP_OPTS="/workarea /dynamic-resolution -decorations +clipboard /bpp:8 /scale:180 /audio-mode:2 /compression-level:2 /codec-cache:jpeg"
+fi
+
+XFREERDP_OPTS="$XFREERDP_OPTS /t:$box"
+
+if [ "$alternatecmd" = "rdp" ]; then
+	cd $basepath/$box
+	vagrant rdp -- $XFREERDP_OPTS
+	cd - >/dev/null
+	exit 0
+fi
+
+if [ "$alternatecmd" = "uprdp" ]; then
+	cd $basepath/$box
+	vagrant up && \
+		vagrant rdp -- $XFREERDP_OPTS
+	cd - >/dev/null
+	exit 0
+fi
+
+cd $basepath/$box
+vagrant $@
+cd - >/dev/null
+

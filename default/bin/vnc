@@ -1,0 +1,7 @@
+#! /bin/bash
+
+server="$1"
+
+VNC_OPTS="-UseIPv6=0 -geometry=3840x2160 -DesktopSize=3840x2160 -RemoteResize=1 -CompressLevel=0 -QualityLevel=0 -DotWhenNoCursor=1"
+vncviewer "${server}" ${VNC_OPTS}
+

@@ -1,0 +1,15 @@
+#! /bin/bash
+
+# https://unix.stackexchange.com/a/116921/44703
+
+SSH_HOST="$2"
+SSH_USER="$1"
+SSH_PORT="$3"
+
+if [ -z "$SSH_PORT" ]; then
+	echo "$0 user host port"
+	exit 1
+fi
+
+ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "arecord -f dat" | mpv -
+

@@ -39,7 +39,7 @@ blueman-applet >/dev/null &
 xbindkeys
 
 # execute a '-locker' program (whatever it is) after '-time' minutes of user inactivity
-xautolock -locker slock -time 5 -notifier 'notify-send -u critical -t 18 "locking in 20 seconds"' -notify 30 -detectsleep -corners 00-- >/dev/null &
+xautolock -locker slock -time 5 -notifier 'notify-send -u critical -t 18000 "locking in 20 seconds"' -notify 30 -detectsleep -corners 00-- >/dev/null &
 
 # red gamma shifting, to save eyesight in the night xD
 # https://wiki.archlinux.org/index.php/Redshift
@@ -64,10 +64,10 @@ wmname LG3D
 #compton -bcCGf
 
 # wallpaper
-set-random-wallpaper.sh || feh -z --bg-fill ${HOME}/ent/wallpapers/*
+displayctl wall || feh -z --bg-fill ${HOME}/ent/wallpapers/*
 
 # clean untagged docker images
-docker-prune-notag-images.sh >~/.docker-prune.log 2>&1 &
+dkctl image prune >~/.docker-prune.log 2>&1 &
 
 # run dwm in loop, for easy reconfiguration
 # to kill X11 use `killall xinit`

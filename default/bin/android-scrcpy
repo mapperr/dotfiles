@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SCRCPY_DIR="${HOME}/git/tools/scrcpy/dist/scrcpy"
+SCRCPY_LOGFILE="${HOME}/.scrcpy.log"
+
+cd ${SCRCPY_DIR}
+${SCRCPY_DIR}/scrcpy </dev/null >${SCRCPY_LOGFILE} 2>&1 &
+cd - >/dev/null
+

@@ -1,0 +1,68 @@
+#! /bin/bash
+
+command="$1"
+display_type="$2"
+display_position="$3"
+
+wallpaper_dir="${HOME}/ent/wallpapers"
+internal_display="eDP1"
+output=`xrandr | grep " connected" | grep -v "^$internal_display" | awk '{print $1}'`
+
+if ! hash xrandr; then
+    echo "xrandr not present, install it first."
+    exit 1
+fi
+
+# DEFAULTS
+if [ -z "$display_type" ]; then
+    display_type="fhd"
+fi
+
+if [ -z "$display_position" ]; then
+    display_position="up"
+fi
+
+
+set_wallpaper() {
+    feh -z --bg-fill ${wallpaper_dir}/*
+    return $?
+}
+
+
+# -----
+
+RET=0
+if [ "$command" = "on" ]; then
+
+    if [ "$display_type" = "fhd" ]; then
+        XRANDR_OPTS="--preferred --scale 2x2"
+        test "$display_position" = "up" && XRANDR_OPTS="$XRANDR_OPTS --pos 0x-2160"
+    fi
+
+    if [ "$display_type" = "uwide" ]; then
+        xrandr --newmode "2560x1080_50.00"  188.60  2560 2704 2976 3392  1080 1081 1084 1112  -HSync +Vsync
+        xrandr --addmode $output "2560x1080_50.00"
+        XRANDR_OPTS="--mode '2560x1080_50.00'"
+        test "$display_position" = "up" && XRANDR_OPTS="$XRANDR_OPTS --above $internal_display"
+    fi
+
+    if [ "$display_type" = "uhd" ] || [ "$display_type" = "4k" ]; then
+        XRANDR_OPTS="--preferred"
+        test "$display_position" = "up" && XRANDR_OPTS="$XRANDR_OPTS --above $internal_display"
+    fi
+
+    xrandr --output $output $XRANDR_OPTS
+    RET=$?
+    set_wallpaper
+
+elif [ "$command" = "off" ]; then
+    xrandr --output $output --off
+    RET=$?
+    set_wallpaper
+elif [ "$command" = "wall" ]; then
+    set_wallpaper
+    RET=$?
+fi
+
+exit $RET
+

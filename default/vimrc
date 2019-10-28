@@ -138,6 +138,7 @@ nnoremap <Leader>g :call fzf#run({'source': 'fd . `git rev-parse --show-toplevel
 nnoremap <Leader>h :call fzf#run({'source': 'fd . ~', 'sink': 'e'})<CR>
 
 " gutentags
+let g:gutentags_enabled = 0
 let g:gutentags_ctags_tagfile = '.ctags'
 let g:gutentags_ctags_exclude = [ 'out', 'bin', 'obj', 'build', 'dist', 'node_modules', 'wwwroot', 'packages', '.terraform' ]
 

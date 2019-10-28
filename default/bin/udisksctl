@@ -1,0 +1,10 @@
+#! /bin/bash
+
+command="$1"
+
+if [ "$command" = "list" ]; then
+    udisksctl dump | grep -e PreferredDevice -e MountPoints
+else
+    udisksctl $@
+fi
+

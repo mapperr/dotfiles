@@ -1,0 +1,60 @@
+#! /bin/bash
+
+screen_recording_file="${HOME}/tmp/scr_recording.mkv"
+screen_recording_pidfile="${HOME}/tmp/.scr_recording.pid"
+
+helpmsg() {
+    echo "
+Usage: $0 grab clip | file | ( rec [start | stop] )
+"
+}
+
+command="$1"
+
+if [ "$command" = "clip" ]; then
+
+    maim -s | xclip -selection clipboard -t image/png
+
+elif [ "$command" = "file" ]; then
+
+    file="$HOME/tmp/screenshot.png"
+    maim -s > "${file}"
+    sxiv "${file}"
+
+elif [ "$command" = "rec" ]; then
+
+    shift
+    subcommand="$1"
+    
+    if [ -z "$subcommand" ]; then
+        if [ -f "$screen_recording_pidfile" ]; then
+            subcommand="stop"
+        else
+            subcommand="start"
+        fi
+    fi
+    
+    if [ "$subcommand" = "start" ]; then
+        rm -r "$screen_recording_file"
+        ffmpeg -f x11grab  -s 3840x2160 -i :0.0 -r 25 -vcodec libx264 ${screen_recording_file} >/dev/null 2>&1 &
+        recording_process_pid=$!
+        echo "$recording_process_pid" > "$screen_recording_pidfile"
+        notify-send -u normal -t 2000 "start recording"
+        sleep 5
+        while ps -p $recording_process_pid >/dev/null; do
+            notify-send -u low -t 2000 "recording..."
+            sleep 10
+        done
+
+    elif [ "$subcommand" = "stop" ]; then
+        test -r "$screen_recording_pidfile" || exit 1
+        recording_process_pid=`cat $screen_recording_pidfile`
+        ps -p $recording_process_pid >/dev/null || exit 1
+        kill $recording_process_pid
+        rm -f "$screen_recording_pidfile"
+        notify-send -u normal -t 2000 "stop recording"
+    fi
+
+else
+    helpmsg
+fi

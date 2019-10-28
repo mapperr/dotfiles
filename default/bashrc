@@ -5,7 +5,7 @@ set -o vi
 
 # preventing that a Ctrl-D (EOF) exits the shell
 # https://unix.stackexchange.com/questions/110240/why-does-ctrl-d-eof-exit-the-shell
-# set -o ignoreeof
+set -o ignoreeof
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -13,6 +13,25 @@ export LANG=en_US.UTF-8
 # History
 # https://wiki.archlinux.org/index.php/Bash#History
 export HISTCONTROL=ignoredups
+
+# ALIASES
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+
+# MISC
+export PATH=$HOME/bin:$HOME/.bin:$PATH
+export EDITOR=nvim
+export XDG_CONFIG_DIR=$HOME/.config
+
+# UTILITIES
+
+## xfreerdp
+XFREERDP_OPTS="/cert-ignore /admin /network:auto -grab-keyboard -themes -wallpaper /workarea /dynamic-resolution"
+export XFREERDP_OPTS="$XFREERDP_OPTS -decorations +clipboard /bpp:16 /scale:180 /audio-mode:2 /compression-level:2 /codec-cache:jpeg"
+
+# KEYS
+ENVKEYS_DIR="$HOME/.keys"
+test -r "$ENVKEYS_DIR/bashrc_keys" && . "$ENVKEYS_DIR/bashrc_keys"
+
 
 # liquidprompt
 # https://github.com/nojhan/liquidprompt
@@ -102,22 +121,4 @@ _gopass_bash_autocomplete() {
 }
 complete -F _gopass_bash_autocomplete gopass
 
-# ALIASES
-[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
-
-# MISC
-export PATH=$HOME/bin:$HOME/bin-utilities:$PATH
-export EDITOR=vim
-export XDG_CONFIG_DIR=$HOME/.config
-
-# UTILITIES
-
-## xfreerdp
-XFREERDP_OPTS="/cert-ignore /admin /network:auto -grab-keyboard -themes -wallpaper /workarea /dynamic-resolution"
-export XFREERDP_OPTS="$XFREERDP_OPTS -decorations +clipboard /bpp:16 /scale:180 /audio-mode:2 /compression-level:2 /codec-cache:jpeg"
-
-
-# KEYS
-ENVKEYS_DIR="$HOME/.keys"
-test -r "$ENVKEYS_DIR/bashrc_keys" && . "$ENVKEYS_DIR/bashrc_keys"
 

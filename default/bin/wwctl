@@ -1,0 +1,124 @@
+#! /bin/bash
+
+# wired/wireless control
+
+context="$1"
+
+get_lan_ip() {
+    ip a show `ip l | grep " UP " | cut -d ' ' -f 2 | tr -d ':'` | grep "inet " | awk '{print $2}' | grep -o "[0-9\.]*"| head -n1
+}
+
+wireless_list() {
+	netctl-auto list | grep -v '^\*' | sort
+}
+
+helpmsg() {
+    echo "
+Usage: $0 <context> [command [subcommand [etc...]]]
+
+    - lan
+        - ip
+            get the current lan ip
+    - wr (wired)
+        connect the first wired interface available
+        - stop
+            stop all wired interfaces
+
+    - wl (wireless)
+        - off
+            blocks all wireless stuff with rfkill
+        -on
+            unblock all wireless stuff with rfkill
+        - scan
+            do a wireless scan
+        - switch, sw
+            - ls
+                list all netctl-auto profiles availables, indexed
+            - [0-9]+
+                switch to the relative profile
+"
+}
+
+if [ "$context" = "lan" ]; then
+    shift
+    command="$1"
+
+    if [ "$command" = "ip" ]; then
+        get_lan_ip
+    fi
+
+elif [ "$context" = "wr" ]; then
+    shift
+    command="$1"
+
+    if [ "$command" = "stop" ]; then
+        sudo netctl stop-all
+    else
+        wired_interfaces=`ip link | grep "[0-9]\{1,\}: en" | cut -d ' ' -f 2 | tr -d ':'`
+
+        counter=1
+        for wired_interface in $wired_interfaces; do
+            if [ ! -z "$command" ] && [ $command -eq $counter ]; then
+                sudo dhcpcd $wired_interface
+                exit 0
+            fi
+            test -z "$command" && echo "profiles available for [$wired_interface]"
+            test -z "$command" && echo "$counter - start raw dhcpcd on $wired_interface"
+            counter=`expr $counter + 1`
+            for profile in `sudo netctl list | grep -o "\b$wired_interface\-.*"`; do
+                test -z "$command" && echo -n "$counter - $profile"
+                if test -z "$command";then
+                    if sudo netctl list | grep $profile | grep \* >/dev/null; then
+                        echo " [active]"
+                    else
+                        echo ""
+                    fi
+                fi
+                if [ ! -z "$command" ] && [ $command -eq $counter ]; then
+                    sudo netctl start $profile
+                    exit 0
+                fi
+                counter=`expr $counter + 1`
+            done
+        done
+    fi
+
+elif [ "$context" = "wl" ]; then
+    shift
+    command="$1"
+
+    if [ "$command" = "off" ]; then
+        sudo rfkill block all
+    elif [ "$command" = "on" ]; then
+        sudo rfkill unblock all
+    elif [ "$command" = "scan" ]; then
+        sudo iw wlp2s0 scan | grep SSID
+    elif [ "$command" = "info" ]; then
+        sudo netctl-auto list | grep '*'
+    elif [ "$command" = "switch" ] || [ "$command" = "sw" ]; then
+        shift
+        subcommand="$1"
+
+        if [ "$subcommand" = "ls" ]; then
+            counter=1
+            for wifi in `wireless_list`; do
+                echo "${counter} - ${wifi}"
+                counter=`expr ${counter} + 1`
+            done
+        elif echo "$subcommand" | grep -E '^[0-9]+$' >/dev/null ; then
+            counter=1
+            for wifi in `wireless_list`; do
+                if [ $counter = $subcommand ]; then
+                    netctl_command="netctl-auto switch-to ${wifi}"
+                    if [ "`whoami`" = "root" ]; then ${netctl_command}
+                    else sudo ${netctl_command}; fi
+                    exit 0
+                fi
+                counter=`expr ${counter} + 1`
+            done
+        fi
+    fi
+else
+    helpmsg
+fi
+

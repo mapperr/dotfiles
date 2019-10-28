@@ -1,0 +1,12 @@
+#! /bin/bash
+
+target_server="$1"
+username="$2"
+password="$3"
+
+if [ -z "$target_server" ]; then
+    target_server="127.0.0.1:3389"
+fi
+
+xfreerdp $XFREERDP_OPTS /u:$username /p:$password /v:$target_server
+

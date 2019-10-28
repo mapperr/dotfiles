@@ -1,0 +1,14 @@
+#! /bin/bash
+
+app="$1"
+
+if [ "$app" = "naev" ]; then
+    appid="org.naev.Naev"
+
+elif [ "$app" = "retroarch" ]; then
+    apid="org.libretro.RetroArch"
+
+else
+    flatpak run "$appid"
+fi
+

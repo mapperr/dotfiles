@@ -1,0 +1,15 @@
+#! /bin/bash
+
+context="$1"
+
+if [ "$context" = "image" ]; then
+    shift
+    command="$1"
+
+    if [ "$command" = "prune" ]; then
+        docker images | grep -F '<none>' | awk '{print $3}' | xargs docker rmi
+
+    elif [ "$command" = "update" ]; then
+        for im in `docker images | awk '{print $1,$2}' | sed 's/ /:/g'`; do echo "upgrading [$im]"; docker pull $im; done
+    fi
+fi

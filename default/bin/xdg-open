@@ -1,0 +1,32 @@
+#!/bin/sh
+
+
+case "${1%%:*}" in
+	http|https)
+		exec qutebrowser --target window "$1"
+		;;
+	*.pdf)
+		exec mupdf "$1"
+		;;
+	mailto)
+		exec aerc "$1"
+		;;
+	*)
+        if hash file; then
+            filetype=`file "$1"`
+
+            if echo "$filetype" | grep "PDF document">/dev/null; then
+                exec mupdf "$1"
+
+            elif echo "$filetype" | grep "HTML document">/dev/null; then
+                mv "$1" "$1.html" && exec qutebrowser --target window "$1.html"
+
+            elif echo "$filetype" | grep "ASCII text">/dev/null \
+                || echo "$filetype" | grep "Unicode text">/dev/null; then
+                exec st -e nvim "$1"
+
+            fi
+        fi
+        exec /usr/bin/xdg-open "$@"
+        ;;
+esac
