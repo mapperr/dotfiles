@@ -8,7 +8,9 @@ config_version: 2
 settings:
   content.javascript.enabled:
     '*://*.calendar.google.com/*': true
+    '*://*.github.com/*': true
     '*://*.gitlab.com/*': true
     '*://*.stackoverflow.com/*': true
     '*://*.toggl.com/*': true
     '*://*.trello.com/*': true
+    '*://*.v2.clarity.design/*': true

@@ -9,6 +9,7 @@ set -o ignoreeof
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=$LANG
 
 # History
 # https://wiki.archlinux.org/index.php/Bash#History
