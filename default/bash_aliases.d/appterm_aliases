@@ -1,0 +1,7 @@
+alias ff='fzf --no-mouse --no-sort --color=dark --tabstop=4'
+alias powertop-autotune='powertop --auto-tune'
+alias r='ranger'
+alias sc='screen'
+alias tm='tmux'
+alias tt='task'
+alias ttt='timew'
