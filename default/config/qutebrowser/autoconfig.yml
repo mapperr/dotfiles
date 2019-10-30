@@ -14,3 +14,4 @@ settings:
     '*://*.toggl.com/*': true
     '*://*.trello.com/*': true
     '*://*.v2.clarity.design/*': true
+    '*://*.vimawesome.com/*': true

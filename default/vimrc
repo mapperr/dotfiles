@@ -10,6 +10,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vim-scripts/SyntaxRange'
+Plugin 'vim-scripts/ingo-library'
 Plugin 'altercation/vim-colors-solarized'
 " Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/fzf'
@@ -49,6 +52,8 @@ filetype plugin indent on    " required
 " https://vi.stackexchange.com/a/784
 runtime macros/matchit.vim
 
+set laststatus=2
+set t_Co=256
 
 if &term =~ '256color'
     " disable Background Color Erase (BCE) so that color schemes
@@ -56,6 +61,45 @@ if &term =~ '256color'
     " see also http://sunaku.github.io/vim-256color-bce.html
     set t_ut=
 endif
+
+" copied from ddevault
+set encoding=utf-8
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set magic " unbreak vim's regex implementation
+
+set number
+set scrolloff=3
+set sidescroll=3
+
+set ruler
+set cc=80
+set nowrap
+
+set ignorecase
+set smartcase
+
+set splitbelow
+set hidden
+set notimeout
+
+" Search as you type, highlight results
+set incsearch
+set showmatch
+set hlsearch
+
+" Don't litter swp files everywhere
+set backupdir=~/.cache
+set directory=~/.cache
+
+set nofoldenable
+set lazyredraw
+
+set tags=./tags;
+
+set printheader=\
+" end ddevault copy
 
 let g:solarized_termcolors=256
 syntax enable
@@ -71,10 +115,12 @@ set nosmartindent
 set noexpandtab
 set paste
 set number
-" tab as 4 spaces
-" https://stackoverflow.com/a/1878983/1407614
+
+" tab as 4 spaces: https://stackoverflow.com/a/1878983/1407614
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+
+" It does not work >.<
 " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
@@ -88,10 +134,6 @@ let &t_EI = "\<Esc>[2 q"
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-
-" NERDTree
-" map <F2> :NERDTreeToggle<CR>
-
 " neoranger
 " https://vimawesome.com/plugin/neoranger
 " Open ranger at current file with "-"
@@ -99,9 +141,6 @@ let &t_EI = "\<Esc>[2 q"
 map <F2> :RangerCurrentFile<CR>
 " Open ranger in current working directory
 nnoremap <silent> <Leader>r :Ranger<CR>
-
-" NERDCommenter
-" filetype plugin on
 
 " tagbar
 nmap <F3> :TagbarToggle<CR>
@@ -115,9 +154,6 @@ noremap <F4> :Autoformat<CR>
 " wildignore (considered by ctrlp and, theoretically, gutentags. But gutentags seems to ignore it)
 set wildignore+=*.so,*.swp,*.zip
 set wildignore+=*/tmp/*,*/out/*,*/bin/*,*/obj/*,*/build/*,*/dist/*,*/node_modules/*,*/wwwroot/*,*/packages/*,*/.terraform/*
-
-" ctrlp
-" let g:ctrlp_custom_ignore = [ '' ]
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
