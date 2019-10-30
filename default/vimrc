@@ -95,10 +95,9 @@ set directory=~/.cache
 
 set nofoldenable
 set lazyredraw
-
 set tags=./tags;
-
 set printheader=\
+nnoremap \\ :noh<cr> " Clear higlighting
 " end ddevault copy
 
 let g:solarized_termcolors=256
@@ -133,6 +132,7 @@ let &t_EI = "\<Esc>[2 q"
 "  4 -> solid underscore
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
+
 
 " neoranger
 " https://vimawesome.com/plugin/neoranger

@@ -1320,6 +1320,7 @@ c.downloads.location.directory = '~/tmp'
 ## Open new tabs (middleclick/ctrl+click) in the background.
 ## Type: Bool
 # c.tabs.background = False
+c.tabs.background = True
 
 ## Mouse button with which to close tabs.
 ## Type: String
@@ -1522,6 +1523,7 @@ c.downloads.location.directory = '~/tmp'
 ## for a blank page.
 ## Type: FuzzyUrl
 # c.url.default_page = 'https://start.duckduckgo.com/'
+c.url.default_page = 'about:blank'
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
@@ -1562,6 +1564,7 @@ c.downloads.location.directory = '~/tmp'
 ## Wayland.
 ## Type: Bool
 # c.window.hide_decoration = False
+c.window.hide_decoration = True
 
 ## Format to use for the window title. The same placeholders like for
 ## `tabs.title.format` are defined.
