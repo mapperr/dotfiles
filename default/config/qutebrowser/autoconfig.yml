@@ -6,12 +6,68 @@
 
 config_version: 2
 settings:
+  auto_save.interval:
+    global: 15000
+  colors.hints.bg:
+    global: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.9),
+      stop:1 rgba(255, 197, 66, 0.9))
+  colors.hints.fg:
+    global: black
+  colors.keyhint.bg:
+    global: rgba(0, 0, 0, 90%)
+  content.autoplay:
+    global: false
+  content.images:
+    global: true
   content.javascript.enabled:
     '*://*.calendar.google.com/*': true
+    '*://*.clarity.design/*': true
     '*://*.github.com/*': true
     '*://*.gitlab.com/*': true
     '*://*.stackoverflow.com/*': true
     '*://*.toggl.com/*': true
+    '*://*.translate.google.com/*': true
     '*://*.trello.com/*': true
     '*://*.v2.clarity.design/*': true
     '*://*.vimawesome.com/*': true
+    '*://*.www.gog.com/*': true
+    '*://*.www.google.com/*': true
+    '*://*.www.playstation.com/*': true
+  fonts.completion.category:
+    global: bold 12pt monospace
+  fonts.completion.entry:
+    global: 12pt monospace
+  fonts.debug_console:
+    global: 12pt monospace
+  fonts.downloads:
+    global: 12pt monospace
+  fonts.hints:
+    global: bold 14pt monospace
+  fonts.keyhint:
+    global: 12pt monospace
+  fonts.messages.error:
+    global: 12pt monospace
+  fonts.messages.info:
+    global: 12pt monospace
+  fonts.messages.warning:
+    global: 12pt monospace
+  fonts.monospace:
+    global: '"Terminus (TTF)", "xos4 Terminus", Terminus, Monospace, "DejaVu Sans
+      Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier,
+      "Liberation Mono", monospace, Fixed, Consolas, Terminal'
+  fonts.prompts:
+    global: 12pt sans-serif
+  fonts.statusbar:
+    global: 12pt monospace
+  fonts.tabs:
+    global: 12pt monospace
+  hints.auto_follow_timeout:
+    global: 500
+  hints.uppercase:
+    global: false
+  input.partial_timeout:
+    global: 30000
+  keyhint.delay:
+    global: 100
+  messages.timeout:
+    global: 5000
