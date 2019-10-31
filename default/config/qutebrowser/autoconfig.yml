@@ -24,7 +24,15 @@ settings:
     '*://*.clarity.design/*': true
     '*://*.github.com/*': true
     '*://*.gitlab.com/*': true
+    '*://*.hub.docker.com/*': true
+    '*://*.keep.google.com/*': true
+    '*://*.listen.tidal.com/*': true
+    '*://*.manage.migadu.com/*': true
+    '*://*.myaccount.google.com/*': true
+    '*://*.offer.tidal.com/*': true
+    '*://*.play.google.com/*': true
     '*://*.stackoverflow.com/*': true
+    '*://*.tidal.com/*': true
     '*://*.toggl.com/*': true
     '*://*.translate.google.com/*': true
     '*://*.trello.com/*': true
@@ -32,7 +40,11 @@ settings:
     '*://*.vimawesome.com/*': true
     '*://*.www.gog.com/*': true
     '*://*.www.google.com/*': true
+    '*://*.www.linkedin.com/*': true
+    '*://*.www.migadu.com/*': true
+    '*://*.www.netflix.com/*': true
     '*://*.www.playstation.com/*': true
+    '*://*.www.youtube.com/*': true
   fonts.completion.category:
     global: bold 12pt monospace
   fonts.completion.entry:

@@ -1,24 +1,31 @@
 [user]
 	name = mapperr
 	email = michelangeloperrotta@gmail.com
-
 [credential]
 	helper = store
-	
 [push]
     default = simple
-	
+[pull]
+	rebase = true
+[sendemail]
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = michelangeloperrotta@gmail.com
+	smtpServerPort = 587
+[gitreview]
+	username = mapperr
+[instaweb]
+	browser = qutebrowser
 [alias]
 	ss = status
 	aa = add -A
 	bb = branch
 	pp = !git pull && git push
-	ca = !git add -A && git commit
+	ac = !git add -A && git commit
 	ci = commit
 	co = checkout
 	sv = !git svn rebase && git svn dcommit
 	ll = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %C(green)(%cr) %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s%Creset'
-	
 [gui]
-	fontui = -family \"Source Code Pro\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"Source Code Pro\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"Terminus (TTF)\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Terminus (TTF)\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
