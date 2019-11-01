@@ -1,4 +1,4 @@
 #! /bin/bash
 
-docker run --rm -it -v firebase:/home/node andreysenov/firebase-tools sh
+docker run --rm -it -v $HOME/.firebasecli:/home/node -p 9005:9005 andreysenov/firebase-tools sh
 

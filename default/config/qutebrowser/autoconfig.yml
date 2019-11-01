@@ -20,6 +20,7 @@ settings:
   content.images:
     global: true
   content.javascript.enabled:
+    '*://*.app.plex.tv/*': true
     '*://*.calendar.google.com/*': true
     '*://*.clarity.design/*': true
     '*://*.github.com/*': true
@@ -27,7 +28,9 @@ settings:
     '*://*.hub.docker.com/*': true
     '*://*.keep.google.com/*': true
     '*://*.listen.tidal.com/*': true
+    '*://*.localhost/*': true
     '*://*.manage.migadu.com/*': true
+    '*://*.meta.sr.ht/*': true
     '*://*.myaccount.google.com/*': true
     '*://*.offer.tidal.com/*': true
     '*://*.play.google.com/*': true
@@ -38,12 +41,14 @@ settings:
     '*://*.trello.com/*': true
     '*://*.v2.clarity.design/*': true
     '*://*.vimawesome.com/*': true
+    '*://*.webmail.migadu.com/*': true
     '*://*.www.gog.com/*': true
     '*://*.www.google.com/*': true
     '*://*.www.linkedin.com/*': true
     '*://*.www.migadu.com/*': true
     '*://*.www.netflix.com/*': true
     '*://*.www.playstation.com/*': true
+    '*://*.www.plex.tv/*': true
     '*://*.www.youtube.com/*': true
   fonts.completion.category:
     global: bold 12pt monospace
