@@ -19,7 +19,7 @@ export HISTCONTROL=ignoredups
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 
 # MISC
-export PATH=$HOME/bin:$HOME/.bin:$HOME/.shortcuts:$PATH
+export PATH=$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.shortcuts:$PATH
 export EDITOR=nvim
 export XDG_CONFIG_DIR=$HOME/.config
 

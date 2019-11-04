@@ -1,4 +1,5 @@
 alias cd..="cd .."
+alias ee="exit"
 alias jctl='journalctl'
 alias l='exa -1F'
 alias la='l -a'

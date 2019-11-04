@@ -1,0 +1,9 @@
+[version]
+version = 2.1.0
+
+[auth]
+# from env TOGGL_API_TOKEN
+
+[options]
+tz = local
+
