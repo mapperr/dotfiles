@@ -97,7 +97,7 @@ set nofoldenable
 set lazyredraw
 set tags=./tags;
 set printheader=\
-nnoremap \\ :noh<cr> " Clear higlighting
+nnoremap \c :noh<cr> " Clear higlighting
 " end ddevault copy
 
 let g:solarized_termcolors=256

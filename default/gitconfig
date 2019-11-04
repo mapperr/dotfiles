@@ -21,6 +21,9 @@
 	aa = add -A
 	bb = branch
 	pp = !git pull && git push
+	pl = pull
+	ph = push
+	ri = rebase -i
 	ac = !git add -A && git commit
 	ci = commit
 	co = checkout

@@ -23,6 +23,8 @@ settings:
     '*://*.app.plex.tv/*': true
     '*://*.calendar.google.com/*': true
     '*://*.clarity.design/*': true
+    '*://*.contacts.google.com/*': true
+    '*://*.dashboard.ngrok.com/*': true
     '*://*.github.com/*': true
     '*://*.gitlab.com/*': true
     '*://*.hub.docker.com/*': true
@@ -35,6 +37,7 @@ settings:
     '*://*.offer.tidal.com/*': true
     '*://*.play.google.com/*': true
     '*://*.stackoverflow.com/*': true
+    '*://*.stripe.com/*': true
     '*://*.tidal.com/*': true
     '*://*.toggl.com/*': true
     '*://*.translate.google.com/*': true
