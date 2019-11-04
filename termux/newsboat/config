@@ -1,0 +1,3 @@
+#articlelist-format "%4i %f %D %6L  %?T?|%-17T|  ?%t"
+articlelist-format "%4i %t"
+browser "termux-open-url %u"
