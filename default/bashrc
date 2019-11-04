@@ -18,6 +18,10 @@ export HISTCONTROL=ignoredups
 # ALIASES
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 
+# KEYS
+ENVKEYS_DIR="$HOME/.keys"
+test -r "$ENVKEYS_DIR/bashrc_keys" && . "$ENVKEYS_DIR/bashrc_keys"
+
 # MISC
 export PATH=$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.shortcuts:$PATH
 export EDITOR=nvim
@@ -28,11 +32,6 @@ export XDG_CONFIG_DIR=$HOME/.config
 ## xfreerdp
 XFREERDP_OPTS="/cert-ignore /admin /network:auto -grab-keyboard -themes -wallpaper /workarea /dynamic-resolution"
 export XFREERDP_OPTS="$XFREERDP_OPTS -decorations +clipboard /bpp:16 /scale:180 /audio-mode:2 /compression-level:2 /codec-cache:jpeg"
-
-# KEYS
-ENVKEYS_DIR="$HOME/.keys"
-test -r "$ENVKEYS_DIR/bashrc_keys" && . "$ENVKEYS_DIR/bashrc_keys"
-
 
 # liquidprompt
 # https://github.com/nojhan/liquidprompt
