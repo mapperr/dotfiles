@@ -34,5 +34,5 @@ fi
 
 qutebrowser -B "$base_dir" \
 -s window.title_format "{perc}[$profile] - {current_title}{title_sep}qutebrowser" \
-$@
+"$@"
 
