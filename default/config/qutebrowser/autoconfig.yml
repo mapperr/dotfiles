@@ -20,6 +20,7 @@ settings:
   content.images:
     global: true
   content.javascript.enabled:
+    '*://*.angular.io/*': true
     '*://*.app.plex.tv/*': true
     '*://*.calendar.google.com/*': true
     '*://*.clarity.design/*': true
