@@ -24,6 +24,7 @@ settings:
     '*://*.app.plex.tv/*': true
     '*://*.calendar.google.com/*': true
     '*://*.clarity.design/*': true
+    '*://*.cmpwn.com/*': true
     '*://*.contacts.google.com/*': true
     '*://*.dashboard.ngrok.com/*': true
     '*://*.drive.google.com/*': true
