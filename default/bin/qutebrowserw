@@ -1,0 +1,38 @@
+#! /bin/bash
+
+# A dumb profile-management wrapper for qutebrowser
+
+# It stores profiles in ~/.qutebrowserw, use them as base dirs
+# and symlinks your default config in them.
+# Also it tweak the window title adding the profile name to it.
+
+
+profile="$1"
+shift
+
+get_base_dir() {
+    local profile="$1"
+    local qb_config_dir="$HOME/.config/qutebrowser"
+    local qbw_dir="$HOME/.qutebrowserw"
+    local profile_dir="$qbw_dir/$profile"
+    if [ -z "$profile" ]; then
+        echo "specify a profile name" >&2
+        exit 1
+    fi
+    if [ ! -d "$profile_dir" ]; then
+        mkdir -p "$profile_dir"
+        ln -s "$qb_config_dir" "$profile_dir/config"
+    fi
+    echo "$profile_dir"
+}
+
+base_dir=`get_base_dir "$profile"`
+if [ -z "$base_dir" ]; then
+    echo "error" >&2
+    exit 1
+fi
+
+qutebrowser -B "$base_dir" \
+-s window.title_format "{perc}[$profile] - {current_title}{title_sep}qutebrowser" \
+$@
+

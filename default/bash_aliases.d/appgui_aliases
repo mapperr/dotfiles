@@ -2,3 +2,4 @@ alias chromiump='chromium --incognito'
 alias firefoxp='firefox --private-window'
 alias fp='flatpak'
 alias qb="qutebrowser"
+alias qbw="qutebrowserw"

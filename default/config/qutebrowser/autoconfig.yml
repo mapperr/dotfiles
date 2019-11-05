@@ -26,6 +26,7 @@ settings:
     '*://*.clarity.design/*': true
     '*://*.contacts.google.com/*': true
     '*://*.dashboard.ngrok.com/*': true
+    '*://*.drive.google.com/*': true
     '*://*.github.com/*': true
     '*://*.gitlab.com/*': true
     '*://*.hub.docker.com/*': true
@@ -37,6 +38,7 @@ settings:
     '*://*.myaccount.google.com/*': true
     '*://*.offer.tidal.com/*': true
     '*://*.play.google.com/*': true
+    '*://*.stackexchange.com/*': true
     '*://*.stackoverflow.com/*': true
     '*://*.stripe.com/*': true
     '*://*.tidal.com/*': true
