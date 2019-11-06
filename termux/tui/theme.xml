@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <THEME>
 <input_color value="#ff00ff00"/>
-<output_color value="#ffffffff"/>
+<output_color value="#ffaabbbb"/>
 <bg_color value="#ff000000"/>
 <device_color value="#ffff9800"/>
 <battery_color_high value="#4CAF50"/>

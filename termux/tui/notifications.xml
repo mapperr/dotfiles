@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NOTIFICATIONS>
-<show_notifications value="false"/>
+<show_notifications value="true"/>
 <app_notification_enabled_default value="true"/>
 <default_notification_color value="#00FF00"/>
-<notification_format value="[%t] %pkg: %[100][teal]title --- %text"/>
+<notification_format value="%n&gt;&gt; %t %n %pkg %n %app %n %{title.big:title:...} %n %[1000][teal]{textLines:bigText:text:...}"/>
 <click_notification value="true"/>
 <long_click_notification value="true"/>
 <notification_popup_exclude_app value="true"/>
 <notification_popup_exclude_notification value="true"/>
 <notification_popup_reply value="true"/>
+<filter id="-1" value="%app %n Synchronizing \d* account"/>
+<filter id="-1" value="%app %n Change keyboard"/>
 </NOTIFICATIONS>
