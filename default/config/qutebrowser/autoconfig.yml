@@ -20,13 +20,16 @@ settings:
   content.images:
     global: true
   content.javascript.enabled:
+    '*://*.192.168.0.101/*': true
     '*://*.angular.io/*': true
+    '*://*.api.slack.com/*': true
     '*://*.app.plex.tv/*': true
     '*://*.calendar.google.com/*': true
     '*://*.clarity.design/*': true
     '*://*.cmpwn.com/*': true
     '*://*.contacts.google.com/*': true
     '*://*.dashboard.ngrok.com/*': true
+    '*://*.dnsimple.com/*': true
     '*://*.drive.google.com/*': true
     '*://*.github.com/*': true
     '*://*.gitlab.com/*': true
@@ -36,16 +39,21 @@ settings:
     '*://*.localhost/*': true
     '*://*.manage.migadu.com/*': true
     '*://*.meta.sr.ht/*': true
+    '*://*.mobile.twitter.com/*': true
+    '*://*.my.playstation.com/*': true
     '*://*.myaccount.google.com/*': true
     '*://*.offer.tidal.com/*': true
     '*://*.play.google.com/*': true
+    '*://*.slack.com/*': true
     '*://*.stackexchange.com/*': true
     '*://*.stackoverflow.com/*': true
+    '*://*.store.playstation.com/*': true
     '*://*.stripe.com/*': true
     '*://*.tidal.com/*': true
     '*://*.toggl.com/*': true
     '*://*.translate.google.com/*': true
     '*://*.trello.com/*': true
+    '*://*.twitter.com/*': true
     '*://*.v2.clarity.design/*': true
     '*://*.vimawesome.com/*': true
     '*://*.webmail.migadu.com/*': true
@@ -54,8 +62,10 @@ settings:
     '*://*.www.linkedin.com/*': true
     '*://*.www.migadu.com/*': true
     '*://*.www.netflix.com/*': true
+    '*://*.www.patreon.com/*': true
     '*://*.www.playstation.com/*': true
     '*://*.www.plex.tv/*': true
+    '*://*.www.staging.socyza.com/*': true
     '*://*.www.youtube.com/*': true
   fonts.completion.category:
     global: bold 12pt monospace
