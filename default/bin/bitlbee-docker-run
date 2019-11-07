@@ -1,0 +1,8 @@
+#! /bin/bash
+
+docker run -d --name bitlbee \
+-v $HOME/.bitlbee:/bitlbee-data:rw \
+-v /etc/localtime:/etc/localtime:ro \
+-p 6667:6667 \
+bclemens/bitlbee
+
