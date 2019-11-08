@@ -2,7 +2,9 @@ import os
 
 # behaviour
 c.editor.command = ['st', '-e', 'nvim' , '{file}']
+c.downloads.location.directory = os.path.expanduser('~/tmp/')
 c.content.autoplay = False
+c.content.javascript.can_open_tabs_automatically = True
 c.tabs.background = True
 c.url.default_page = 'about:blank'
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/html/?q={}'}
