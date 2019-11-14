@@ -28,7 +28,10 @@
 	ci = commit
 	co = checkout
 	sv = !git svn rebase && git svn dcommit
-	ll = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %C(green)(%cr) %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s%Creset'
+    l = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty=oneline
+    ll = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty
+    lll = log --decorate --oneline --branches --graph --abbrev-commit --pretty=fuller
+	lc = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %C(green)(%cr) %C(yellow)%d%Creset %C(blue)<%an>%Creset %s%Creset'
 [gui]
 	fontui = -family \"Terminus (TTF)\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Terminus (TTF)\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
