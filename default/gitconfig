@@ -20,18 +20,20 @@
 	ss = status
 	aa = add -A
 	bb = branch
-	pp = !git pull && git push
 	pl = pull
 	ph = push
-	ri = rebase -i
+	pp = !git pl && git ph
+	rb = rebase
+	ri = rb -i
 	ac = !git add -A && git commit
 	ci = commit
 	co = checkout
 	sv = !git svn rebase && git svn dcommit
-    l = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty=oneline
-    ll = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty
-    lll = log --decorate --oneline --branches --graph --abbrev-commit --pretty=fuller
-	lc = log --decorate --oneline --branches --graph --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %C(green)(%cr) %C(yellow)%d%Creset %C(blue)<%an>%Creset %s%Creset'
+    logbase = log --decorate --oneline --branches --graph --abbrev-commit
+    l = !git logbase --date=relative --pretty=oneline
+    ll = !git logbase --date=relative --pretty
+    lll = !git logbase --show-signature --pretty=fuller
+	lc = !git logbase --date=relative --pretty=format:'%C(yellow)%h%Creset %C(green)(%cr) %C(yellow)%d%Creset %C(blue)[%G?]<%an>%Creset %s%Creset'
 [gui]
 	fontui = -family \"Terminus (TTF)\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Terminus (TTF)\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
