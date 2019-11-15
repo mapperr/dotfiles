@@ -25,6 +25,7 @@
 	pp = !git pl && git ph
 	rb = rebase
 	ri = rb -i
+	re = remote
 	ac = !git add -A && git commit
 	ci = commit
 	co = checkout
