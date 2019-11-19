@@ -1,4 +1,14 @@
 #! /bin/sh
 
-echo "¯\\_(ツ)_/¯"
+shrug="¯\\_(ツ)_/¯"
+
+opt="$1"
+
+if [ "$opt" = "-c" ]; then
+    echo $shrug | xclip -selection clipboard -i
+    echo "now you have a shruggy clipboard"
+else
+    echo $shrug
+fi
+
 
