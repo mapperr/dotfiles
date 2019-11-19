@@ -4,8 +4,12 @@ shrug="¯\\_(ツ)_/¯"
 
 opt="$1"
 
-if [ "$opt" = "-c" ]; then
-    echo $shrug | xclip -selection clipboard -i
+if [ "$opt" = "-c" ] || [ "$opt" = "c" ]; then
+    if hash xclip; then
+        echo -n $shrug | xclip -selection clipboard -i
+    elif hash termux-clipboard-set; then
+        echo -n $shrug | termux-clipboard-set
+    fi
     echo "now you have a shruggy clipboard"
 else
     echo $shrug
