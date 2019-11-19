@@ -18,11 +18,9 @@ if [ "$alternatecmd" = "edit" ]; then
     exit 0
 fi
 
-if [ -z "$XFREERDP_OPTS" ]; then
-    XFREERDP_OPTS="/cert-ignore /admin /network:auto -grab-keyboard -themes -wallpaper"
-    XFREERDP_OPTS="/workarea /dynamic-resolution -decorations +clipboard /bpp:8 /scale:180 /audio-mode:2 /compression-level:2 /codec-cache:jpeg"
-fi
-
+XFREERDP_OPTS="$XFREERDP_OPTS /cert-ignore /admin /network:auto -grab-keyboard -themes -wallpaper"
+XFREERDP_OPTS="$XFREERDP_OPTS /workarea /dynamic-resolution -decorations +clipboard /bpp:8 /audio-mode:2 /compression-level:2 /codec-cache:jpeg"
+XFREERDP_OPTS="$XFREERDP_OPTS /scale-device:180 /scale-desktop:180 /scale:180"
 XFREERDP_OPTS="$XFREERDP_OPTS /t:$box"
 
 if [ "$alternatecmd" = "rdp" ]; then

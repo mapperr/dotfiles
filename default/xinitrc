@@ -60,8 +60,8 @@ export _JAVA_OPTIONS="-Djdk.gtk.version=3 -Dawt.useSystemAAFontSettings=on -Dswi
 # https://blog.darknedgy.net/technology/2014/08/27/1/
 wmname LG3D
 
-# compton (composition manager)
-#compton -bcCGf
+# picom (composition manager)
+#picom -bcCGf >/dev/null &
 
 # wallpaper
 displayctl wall || feh -z --bg-fill ${HOME}/ent/wallpapers/*

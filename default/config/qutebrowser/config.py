@@ -1,7 +1,7 @@
 import os
 
 # behaviour
-c.editor.command = ['st', '-e', 'nvim' , '{file}']
+c.editor.command = ['st', '-t', 'scratchpad', '-e', 'nvim' , '{file}']
 c.downloads.location.directory = os.path.expanduser('~/tmp/')
 c.content.autoplay = False
 c.content.javascript.can_open_tabs_automatically = True
