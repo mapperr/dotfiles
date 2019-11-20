@@ -32,7 +32,9 @@ if [ -z "$base_dir" ]; then
     exit 1
 fi
 
-qutebrowser -B "$base_dir" \
--s window.title_format "{perc}[$profile] - {current_title}{title_sep}qutebrowser" \
+qutebrowser \
+-B "$base_dir" \
+-s window.title_format \
+"{perc}[$profile] - {current_title}{title_sep}qutebrowser" \
 "$@"
 
