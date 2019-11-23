@@ -1,8 +1,10 @@
 import os
 
 # behaviour
-# Firefox user agent
-c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/100.0'
+# Firefox desktop user agent
+c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'
+# Firefox mobile user agent
+# c.content.headers.user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
 c.editor.command = ['st', '-t', 'scratchpad', '-e', 'nvim' , '{file}']
 c.downloads.location.directory = os.path.expanduser('~/tmp/')
 c.content.autoplay = False
