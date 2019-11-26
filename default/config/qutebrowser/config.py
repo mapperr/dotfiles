@@ -53,3 +53,6 @@ c.colors.keyhint.bg = 'rgba(0, 0, 0, 90%)'
 # bindings
 config.bind('K', 'tab-next')
 config.bind('J', 'tab-prev')
+
+# theme
+config.source('theme.py')
