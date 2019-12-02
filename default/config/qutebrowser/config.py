@@ -1,22 +1,25 @@
 import os
 
 # behaviour
-# Firefox desktop user agent
-c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'
 # Firefox mobile user agent
 # c.content.headers.user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
-c.editor.command = ['st', '-t', 'scratchpad', '-e', 'nvim' , '{file}']
-c.downloads.location.directory = os.path.expanduser('~/tmp/')
+# Firefox desktop user agent
+# c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'
+
 c.content.autoplay = False
+c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'
 c.content.javascript.can_open_tabs_automatically = True
+c.downloads.location.directory = os.path.expanduser('~/tmp/')
+c.editor.command = ['st', '-t', 'scratchpad', '-e', 'nvim' , '{file}']
+c.hints.auto_follow_timeout = 500
+c.input.partial_timeout = 30000
 c.tabs.background = True
+c.tabs.last_close = 'close'
 c.url.default_page = 'about:blank'
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/html/?q={}'}
 c.url.start_pages = ['about:blank']
 c.zoom.default = '225%'
 c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '225%', '250%', '300%', '400%']
-c.hints.auto_follow_timeout = 500
-c.input.partial_timeout = 30000
 
 # javascript
 c.content.javascript.enabled = False
