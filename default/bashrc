@@ -36,6 +36,10 @@ export XDG_CONFIG_DIR=$HOME/.config
 XFREERDP_OPTS="/cert-ignore /admin /network:auto -grab-keyboard -themes -wallpaper /workarea /dynamic-resolution"
 export XFREERDP_OPTS="$XFREERDP_OPTS -decorations +clipboard /bpp:16 /scale:180 /audio-mode:2 /compression-level:2 /codec-cache:jpeg"
 
+# rclone autocomplete
+# generated with `rclone genautocomplete bash ~/.rclone-autocomplete.sh`
+[[ -f ~/.rclone-autocomplete.sh ]] && source ~/.rclone-autocomplete.sh
+
 # liquidprompt
 # https://github.com/nojhan/liquidprompt
 # Only load Liquid Prompt in interactive shells, not from a script or from scp
