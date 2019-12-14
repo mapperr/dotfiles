@@ -11,8 +11,8 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 /* static const char *fonts[]          = { "Source Code Pro Light:size=10" }; */
-static const char *fonts[]          = { "Terminus (TTF):size=11" };
-static const char dmenufont[]       = "Terminus (TTF):size=11";
+static const char *fonts[]          = { "Terminus (TTF):size=10" };
+static const char dmenufont[]       = "Terminus (TTF):size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -30,22 +30,25 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
+	*	WM_CLASS(STRING) = instance, class
+	*	WM_NAME(STRING) = title
+	*/
 	/* class      instance    title       tags mask     isfloating   monitor */
-        {"Gimp",NULL,NULL,0,1,-1},
-        {"jetbrains-toolbox",NULL,NULL,0,1,-1},
-        {"Firefox","Devtools",NULL,0,1,-1},
-        {"Firefox","Places","Library",0,1,-1},
-        {"Pavucontrol","pavucontrol",NULL,0,1,-1},
-        {"Seahorse","seahorse",NULL,0,1,-1},
-        {"Xarchiver","xarchiver",NULL,0,1,-1},
-        {"Virt-manager","virt-manager",NULL,0,1,-1},
-        {"VirtualBox Manager","VirtualBox Manager",NULL,0,1,-1},
-        {"jetbrains-pycharm","jetbrains-pycharm"," ",0,1,-1},
-        {NULL,  "sun-awt-X11-XDialogPeer",NULL, 0,1,-1},
-        {"org.remmina.Remmina","org.remmina.Remmina","Remmina Remote Desktop Client",0,1,-1},
+    {"Gimp",NULL,NULL,0,1,-1},
+    {"win0",NULL,NULL,0,1,-1},
+    {NULL,"win0",NULL,0,1,-1},
+    {"win0","win0",NULL,0,1,-1},
+    {"jetbrains-toolbox",NULL,NULL,0,1,-1},
+    {"Firefox","Devtools",NULL,0,1,-1},
+    {"Firefox","Places","Library",0,1,-1},
+    {"Pavucontrol","pavucontrol",NULL,0,1,-1},
+    {"Seahorse","seahorse",NULL,0,1,-1},
+    {"Xarchiver","xarchiver",NULL,0,1,-1},
+    {"Virt-manager","virt-manager",NULL,0,1,-1},
+    {"VirtualBox Manager","VirtualBox Manager",NULL,0,1,-1},
+    {"jetbrains-pycharm","jetbrains-pycharm"," ",0,1,-1},
+    {NULL,  "sun-awt-X11-XDialogPeer",NULL, 0,1,-1},
+    {"org.remmina.Remmina","org.remmina.Remmina","Remmina Remote Desktop Client",0,1,-1},
 };
 
 /* layout(s) */
@@ -77,6 +80,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x25", NULL };
 static const char *termcmd[]  = { "st", "-e", "screen" };
+static const char *qutebrowsercmd[]  = { "qutebrowser", NULL };
 static const char *launchercmd[] = {"rofi", "-show", "run", "-run-command", "bash -i -c '{cmd}'"};
 
 #include "movestack.c"
@@ -85,6 +89,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
     { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
     { MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_o,      spawn,          {.v = qutebrowsercmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = launchercmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },

@@ -30,6 +30,7 @@
 	ci = commit
 	co = checkout
 	sv = !git svn rebase && git svn dcommit
+    rem = remote
     logbase = log --decorate --oneline --branches --graph --abbrev-commit
     l = !git logbase --date=relative --pretty=oneline
     ll = !git logbase --date=relative --pretty

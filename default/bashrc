@@ -46,6 +46,12 @@ export XFREERDP_OPTS="$XFREERDP_OPTS -decorations +clipboard /bpp:16 /scale:180 
 LIQUID_PROMPT_FILE="$HOME/git/laptop/liquidprompt/liquidprompt"
 if [[ $- = *i* ]] && [[ -r $LIQUID_PROMPT_FILE ]]; then source $LIQUID_PROMPT_FILE; fi
 
+# paste.rs
+function pasters() {
+    local file=${1:-/dev/stdin}
+    curl --data-binary @${file} https://paste.rs
+}
+
 # fzf
 # https://github.com/junegunn/fzf
 export FZF_DEFAULT_COMMAND='fd -a'

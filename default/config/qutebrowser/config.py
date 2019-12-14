@@ -18,7 +18,7 @@ c.tabs.last_close = 'close'
 c.url.default_page = 'about:blank'
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/html/?q={}'}
 c.url.start_pages = ['about:blank']
-c.zoom.default = '225%'
+c.zoom.default = '200%'
 c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '225%', '250%', '300%', '400%']
 
 # javascript
@@ -46,7 +46,7 @@ c.fonts.messages.error = monospace_font_definition
 c.fonts.messages.info = monospace_font_definition
 c.fonts.messages.warning = monospace_font_definition
 c.fonts.monospace = '"Terminus (TTF)", "xos4 Terminus", Terminus, Monospace, "DejaVu Sans  Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier,  "Liberation Mono", monospace, Fixed, Consolas, Terminal'
-c.fonts.prompts = '12pt sans-serif'
+c.fonts.prompts = monospace_font_definition
 c.fonts.statusbar = monospace_font_definition
 c.fonts.tabs = monospace_font_definition
 c.window.hide_decoration = True

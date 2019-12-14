@@ -5,7 +5,7 @@ configuration {
 /*	columns: 1;*/
 	/* font: "Source Code Pro Light 16"; */
 	/* font: "Terminus (TTF) 16"; */
-	font: "Terminus (TTF) 18";
+	font: "Terminus (TTF) 16";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/

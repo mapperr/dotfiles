@@ -85,7 +85,7 @@ set hidden
 set notimeout
 
 " Search as you type, highlight results
-" set incsearch
+set noincsearch " I find this annoying
 set showmatch
 set hlsearch
 
