@@ -35,9 +35,7 @@ static const Rule rules[] = {
 	*/
 	/* class      instance    title       tags mask     isfloating   monitor */
     {"Gimp",NULL,NULL,0,1,-1},
-    {"win0",NULL,NULL,0,1,-1},
-    {NULL,"win0",NULL,0,1,-1},
-    {"win0","win0",NULL,0,1,-1},
+    {NULL,NULL,"win0",0,1,-1},
     {"jetbrains-toolbox",NULL,NULL,0,1,-1},
     {"Firefox","Devtools",NULL,0,1,-1},
     {"Firefox","Places","Library",0,1,-1},
@@ -88,9 +86,9 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
     { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-    { MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = qutebrowsercmd } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = launchercmd } },
+    { MODKEY,                       XK_p,      togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = launchercmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

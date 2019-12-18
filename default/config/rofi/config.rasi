@@ -1,7 +1,9 @@
 configuration {
 /*	modi: "combi,window,run,ssh";*/
 /*	width: 50;*/
+	width: 30;
 /*	lines: 15;*/
+	lines: 10;
 /*	columns: 1;*/
 	/* font: "Source Code Pro Light 16"; */
 	/* font: "Terminus (TTF) 16"; */
@@ -29,6 +31,7 @@ configuration {
 /*	case-sensitive: false;*/
 /*	cycle: true;*/
 /*	sidebar-mode: false;*/
+	sidebar-mode: true;
 /*	eh: 1;*/
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
@@ -140,4 +143,8 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
-@import "/usr/share/rofi/themes/solarized_alternate.rasi"
+/* @import "/usr/share/rofi/themes/solarized_alternate.rasi" */
+/* @import "/usr/share/rofi/themes/solarized.rasi" */
+/* @import "/usr/share/rofi/themes/Arc-Dark.rasi" */
+@import "/usr/share/rofi/themes/android_notification.rasi"
+/* @import "/usr/share/rofi/themes/sidebar.rasi" */
