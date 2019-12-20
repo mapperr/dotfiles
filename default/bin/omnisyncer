@@ -1,0 +1,84 @@
+#! /bin/bash
+
+refresh_interval_in_secs="$1"
+
+if test -z "$refresh_interval_in_secs"; then
+    refresh_interval_in_secs=300
+fi
+
+
+# zero to disable
+offlineimap_quick_weight=0
+offlineimap_weight=1
+vdirsyncer_weight=3
+
+
+omni_notify() {
+    local priority="$1"
+    local text="$2"
+    local details="$3"
+
+    local notify_send_urgency='low'
+    if test $priority = 1; then
+        notify_send_urgency='normal'
+    elif test $priority = 2; then
+        notify_send_urgency='critical'
+    fi
+    
+    if test -z "$details"; then
+        details="$text"
+        text="omnisyncer"
+    fi
+    
+    echo "$text | $details"
+    notify-send -u "$notify_send_urgency" "$text" "$details"
+}
+
+sync_offlineimap_quick() {
+    hash offlineimap || return
+    omni_notify 0 'syncing offlineimap quick'
+    offlineimap -q
+}
+
+sync_offlineimap() {
+    hash offlineimap || return
+    omni_notify 0 'syncing offlineimap'
+    offlineimap
+}
+
+sync_vdirsyncer() {
+    hash vdirsyncer || return
+    omni_notify 0 'syncing vdirsyncer'
+    vdirsyncer sync
+    vdirsyncer metasync
+}
+
+offlineimap_quick_counter=0
+offlineimap_counter=0
+vdirsyncer_counter=0
+
+while true; do
+    echo 'start syncing'
+
+    offlineimap_quick_counter=`expr $offlineimap_quick_counter + 1`
+    if [ 0 = `expr $offlineimap_quick_weight - $offlineimap_quick_counter` ]; then
+        sync_offlineimap_quick
+        offlineimap_quick_counter=0
+    fi
+
+    offlineimap_counter=`expr $offlineimap_counter + 1`
+    if [ 0 = `expr $offlineimap_weight - $offlineimap_counter` ]; then
+        sync_offlineimap
+        offlineimap_counter=0
+    fi
+
+    vdirsyncer_counter=`expr $vdirsyncer_counter + 1`
+    if [ 0 = `expr $vdirsyncer_weight - $vdirsyncer_counter` ]; then
+        sync_vdirsyncer
+        vdirsyncer_counter=0
+    fi
+
+    echo "waiting refresh interval: $refresh_interval_in_secs seconds..."
+    sleep $refresh_interval_in_secs
+done
+

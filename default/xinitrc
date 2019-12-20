@@ -22,7 +22,8 @@ lxpolkit >/dev/null &
 volumeicon >/dev/null &
 slstatus >/dev/null &
 cbatticon >/dev/null &
-st -e screen >/dev/null &
+# st -e screen >/dev/null &
+st -t scratchpad -g 80x25 -e screen &
 
 # notification server, works with dbus and libnotify
 dunst >/dev/null &
