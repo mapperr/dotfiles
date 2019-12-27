@@ -6,6 +6,12 @@ if test -z "$refresh_interval_in_secs"; then
     refresh_interval_in_secs=300
 fi
 
+if test "-h" = "$refresh_interval_in_secs" || \
+    test "--help" = "$refresh_interval_in_secs" || \
+    test "help" = "$refresh_interval_in_secs"; then
+    echo "usage: $0 [refresh interval in seconds]"
+    exit 1
+fi
 
 # zero to disable
 offlineimap_quick_weight=0
@@ -44,6 +50,7 @@ sync_offlineimap() {
     hash offlineimap || return
     omni_notify 0 'syncing offlineimap'
     offlineimap
+    omni_notify 0 'synced offlineimap'
 }
 
 sync_vdirsyncer() {
@@ -51,6 +58,7 @@ sync_vdirsyncer() {
     omni_notify 0 'syncing vdirsyncer'
     vdirsyncer sync
     vdirsyncer metasync
+    omni_notify 0 'synced vdirsyncer'
 }
 
 offlineimap_quick_counter=0
@@ -62,23 +70,32 @@ while true; do
 
     offlineimap_quick_counter=`expr $offlineimap_quick_counter + 1`
     if [ 0 = `expr $offlineimap_quick_weight - $offlineimap_quick_counter` ]; then
-        sync_offlineimap_quick
+        sync_offlineimap_quick >/dev/null
         offlineimap_quick_counter=0
     fi
 
     offlineimap_counter=`expr $offlineimap_counter + 1`
     if [ 0 = `expr $offlineimap_weight - $offlineimap_counter` ]; then
-        sync_offlineimap
+        sync_offlineimap >/dev/null
         offlineimap_counter=0
     fi
 
     vdirsyncer_counter=`expr $vdirsyncer_counter + 1`
     if [ 0 = `expr $vdirsyncer_weight - $vdirsyncer_counter` ]; then
-        sync_vdirsyncer
+        sync_vdirsyncer >/dev/null
         vdirsyncer_counter=0
     fi
 
-    echo "waiting refresh interval: $refresh_interval_in_secs seconds..."
-    sleep $refresh_interval_in_secs
+    echo "sync done"
+    echo "waiting $refresh_interval_in_secs seconds for the next sync..."
+
+    wait_tick_in_secs=10
+    wait_counter=0
+    while [ $wait_counter -lt $refresh_interval_in_secs ]; do
+        sleep $wait_tick_in_secs
+        wait_counter=`expr $wait_counter + $wait_tick_in_secs`
+        secs_to_wait=`expr $refresh_interval_in_secs - $wait_counter`
+        echo "$secs_to_wait seconds to the next sync..."
+    done
 done
 

@@ -12,6 +12,10 @@ wireless_list() {
 	netctl-auto list | grep -v '^\*' | sort
 }
 
+get_wired_interfaces() {
+    ip link | grep "[0-9]\{1,\}: en" | cut -d ' ' -f 2 | tr -d ':'
+}
+
 helpmsg() {
     echo "
 Usage: $0 <context> [command [subcommand [etc...]]]
@@ -23,6 +27,7 @@ Usage: $0 <context> [command [subcommand [etc...]]]
         connect the first wired interface available
         - stop
             stop all wired interfaces
+        - set <ip_addr_with_cidr> <gateway_addr> <dns_addr>
 
     - wl (wireless)
         - off
@@ -53,8 +58,30 @@ elif [ "$context" = "wr" ]; then
 
     if [ "$command" = "stop" ]; then
         sudo netctl stop-all
+    elif [ "$command" = "set" ]; then
+        shift
+        ipaddr="$1"
+        gateway="$2"
+        dns="$3"
+        wired_interfaces=`get_wired_interfaces`
+        wired_interface=`echo $wired_interfaces | awk '{print $1}'`
+        
+        profile_name='wwctl-eth-static'
+
+        cat << EOF | sudo tee /etc/netctl/$profile_name
+Description='wwctl eth static'
+Interface=$wired_interface
+Connection=ethernet
+IP=static
+Address=('$ipaddr')
+Gateway=('$gateway')
+DNS=('$dns')
+EOF
+
+        sudo netctl start $profile_name
+
     else
-        wired_interfaces=`ip link | grep "[0-9]\{1,\}: en" | cut -d ' ' -f 2 | tr -d ':'`
+        wired_interfaces=`get_wired_interfaces`
 
         counter=1
         for wired_interface in $wired_interfaces; do
