@@ -34,6 +34,11 @@ set_wallpaper() {
 RET=0
 if [ "$command" = "on" ]; then
 
+    if [ -z "$output"]; then
+        echo "no external display detected"
+        exit 1
+    fi
+
     if [ "$display_type" = "fhd" ]; then
         XRANDR_OPTS="--preferred --scale 2x2"
         test "$display_position" = "up" && XRANDR_OPTS="$XRANDR_OPTS --pos 0x-2160"
@@ -53,11 +58,17 @@ if [ "$command" = "on" ]; then
 
     xrandr --output $output $XRANDR_OPTS
     RET=$?
+    test $RET -ne 0 && exit $RET
     set_wallpaper
 
 elif [ "$command" = "off" ]; then
+    if [ -z "$output"]; then
+        echo "no external display detected"
+        exit 1
+    fi
     xrandr --output $output --off
     RET=$?
+    test $RET -ne 0 && exit $RET
     set_wallpaper
 elif [ "$command" = "wall" ]; then
     set_wallpaper

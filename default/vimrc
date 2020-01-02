@@ -112,7 +112,6 @@ set nowrap
 set noautoindent
 set nosmartindent
 set noexpandtab
-set paste
 set number
 
 " tab as 4 spaces: https://stackoverflow.com/a/1878983/1407614
@@ -124,6 +123,10 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
+
+" toggle paste
+nnoremap <silent> <Leader>p :set paste<CR>
+nnoremap <silent> <Leader>P :set nopaste<CR>
 
 "Cursor settings:
 "  1 -> blinking block

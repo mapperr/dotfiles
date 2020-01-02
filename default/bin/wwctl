@@ -66,7 +66,7 @@ elif [ "$context" = "wr" ]; then
         wired_interfaces=`get_wired_interfaces`
         wired_interface=`echo $wired_interfaces | awk '{print $1}'`
         
-        profile_name='wwctl-eth-static'
+        profile_name='wwctlethstatic'
 
         cat << EOF | sudo tee /etc/netctl/$profile_name
 Description='wwctl eth static'

@@ -1,6 +1,6 @@
-hardstatus off
-hardstatus alwayslastline
-hardstatus string '%{= kG}[%{G}%H%? %?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%Y-%m-%d %{W}%c%{g}]'
+# hardstatus off
+# hardstatus alwayslastline
+# hardstatus string '%{= kG}[%{G}%H%? %?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%Y-%m-%d %{W}%c%{g}]'
 
 windowlist string "%4n %h%=%f"
 
