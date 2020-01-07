@@ -12,8 +12,7 @@ root:
   noconfirm: true
   nopager: false
   notifications: false
-  path: gpgcli-gitcli-fs+file:///data/data/com.termux/files/home/.password-store
+  path: gpgcli-gitcli-fs+file:///data/data/com.termux/files/home/.gopass/root
   recipient_hash: {}
   safecontent: false
   usesymbols: false
-mounts: {}
