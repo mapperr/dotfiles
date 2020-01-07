@@ -2,7 +2,7 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME $HOME/.Xresources
 
 # make my binaries available
-export PATH="$HOME/bin:$HOME/bin-utilities:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # gnome keyring
 # https://wiki.archlinux.org/index.php/GNOME/Keyring#Use_Without_Gnome
@@ -21,12 +21,11 @@ lxpolkit >/dev/null &
 # other stuffs
 volumeicon >/dev/null &
 slstatus >/dev/null &
-cbatticon >/dev/null &
+# cbatticon >/dev/null &
 # st -e screen >/dev/null &
-st -t scratchpad -g 80x25 -e screen &
 
 # notification server, works with dbus and libnotify
-dunst >/dev/null &
+hash dunst && dunst >/dev/null &
 
 # eventually run megasync
 hash megasync && megasync >/dev/null &

@@ -53,9 +53,14 @@ c.window.hide_decoration = True
 c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.9), stop:1 rgba(255, 197, 66, 0.9))'
 c.colors.keyhint.bg = 'rgba(0, 0, 0, 90%)'
 
-# bindings
-config.bind('K', 'tab-next')
-config.bind('J', 'tab-prev')
 
 # theme
 config.source('theme.py')
+
+# bindings
+config.bind('K', 'tab-next')
+config.bind('J', 'tab-prev')
+# config.bind(
+# 	'<f11>',
+# 	'config-cycle -t statusbar.hide ;; config-cycle -t tabs.show never switching ;; fullscreen',
+# 	mode='normal')

@@ -1,9 +1,11 @@
+# https://wiki.archlinux.org/index.php/GNU_Screen
+
 # hardstatus off
 # hardstatus alwayslastline
 # hardstatus string '%{= kG}[%{G}%H%? %?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%Y-%m-%d %{W}%c%{g}]'
 
 windowlist string "%4n %h%=%f"
-
+#
 # huge scrollback buffer
 defscrollback 5000
 
@@ -11,11 +13,21 @@ defscrollback 5000
 startup_message off
 vbell off
 
+# change escape key from ctrl+a to ctrl+b
+escape ^Bb
+
 # normal scrolling
 termcapinfo xterm* ti@:te@
 
 # get rid of silly xoff stuff
 bind s split
+
+# start at window 1 instead of 0
+# it creates problems: vim does not highlight syntax on window 1 ! O.o?!
+#bind c screen 1
+#bind ^c screen 1
+#bind 0 select 10
+#screen 1
 
 # vim like focus bindings
 bind h focus left
