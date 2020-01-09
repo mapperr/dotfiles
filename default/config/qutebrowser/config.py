@@ -60,7 +60,4 @@ config.source('theme.py')
 # bindings
 config.bind('K', 'tab-next')
 config.bind('J', 'tab-prev')
-# config.bind(
-# 	'<f11>',
-# 	'config-cycle -t statusbar.hide ;; config-cycle -t tabs.show never switching ;; fullscreen',
-# 	mode='normal')
+
