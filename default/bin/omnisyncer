@@ -30,12 +30,12 @@ omni_notify() {
     elif test $priority = 2; then
         notify_send_urgency='critical'
     fi
-    
+
     if test -z "$details"; then
         details="$text"
         text="omnisyncer"
     fi
-    
+
     echo "$text | $details"
     notify-send -u "$notify_send_urgency" "$text" "$details"
 }
@@ -86,16 +86,12 @@ while true; do
         vdirsyncer_counter=0
     fi
 
-    echo "sync done"
-    echo "waiting $refresh_interval_in_secs seconds for the next sync..."
+    next_sync_time=`date -d "now + ${refresh_interval_in_secs}seconds" '+%H:%M'`
+    echo
+    echo "Waiting $refresh_interval_in_secs seconds..."
+    echo "Syncing again at $next_sync_time"
+    echo "Hit Enter to sync now"
+    read -t $refresh_interval_in_secs -p "$wait_msg"
 
-    wait_tick_in_secs=10
-    wait_counter=0
-    while [ $wait_counter -lt $refresh_interval_in_secs ]; do
-        sleep $wait_tick_in_secs
-        wait_counter=`expr $wait_counter + $wait_tick_in_secs`
-        secs_to_wait=`expr $refresh_interval_in_secs - $wait_counter`
-        echo "$secs_to_wait seconds to the next sync..."
-    done
 done
 
