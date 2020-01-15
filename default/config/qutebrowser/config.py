@@ -10,6 +10,7 @@ c.content.autoplay = False
 c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'
 c.content.javascript.can_open_tabs_automatically = True
 c.downloads.location.directory = os.path.expanduser('~/tmp/')
+c.search.incremental = False
 c.editor.command = ['st', '-t', 'scratchpad', '-e', 'nvim' , '{file}']
 c.hints.auto_follow_timeout = 500
 c.input.partial_timeout = 30000

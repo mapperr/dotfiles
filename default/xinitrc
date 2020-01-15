@@ -28,7 +28,7 @@ slstatus >/dev/null &
 hash dunst && dunst >/dev/null &
 
 # eventually run megasync
-hash megasync && megasync >/dev/null &
+# hash megasync && megasync >/dev/null &
 
 # bluetooth manager, works with bluez
 blueman-applet >/dev/null &

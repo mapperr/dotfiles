@@ -11,8 +11,8 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 /* static const char *fonts[]          = { "Source Code Pro Light:size=10" }; */
-static const char *fonts[]          = { "Terminus (TTF):size=12" };
-static const char dmenufont[]       = "Terminus (TTF):size=12";
+static const char *fonts[]          = { "Terminus (TTF):size=10" };
+static const char dmenufont[]       = "Terminus (TTF):size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -36,6 +36,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
     {"Gimp",NULL,NULL,0,1,-1},
     {NULL,NULL,"win0",0,1,-1},
+    {"ROX-Filer","ROX-Filer",NULL,0,1,-1},
     {"jetbrains-toolbox",NULL,NULL,0,1,-1},
     {"Firefox","Devtools",NULL,0,1,-1},
     {"Firefox","Places","Library",0,1,-1},
