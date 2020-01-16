@@ -86,7 +86,7 @@ set notimeout
 
 " Search as you type, highlight results
 set noincsearch " I find this annoying
-set showmatch
+set noshowmatch " I find this superannoying
 set hlsearch
 
 " Don't litter swp files everywhere

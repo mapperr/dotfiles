@@ -21,9 +21,8 @@ test -d $HOME/.bashrc.d && for f in $HOME/.bashrc.d/*; do source $f; done
 # ALIASES
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 
-# KEYS
-ENVKEYS_DIR="$HOME/.keys"
-test -r "$ENVKEYS_DIR/bashrc_keys" && . "$ENVKEYS_DIR/bashrc_keys"
+# SECRETS
+test -r "$HOME/.bash_secrets" && . "$HOME/.bash_secrets"
 
 # MISC
 export PATH=$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.shortcuts:$PATH
