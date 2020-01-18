@@ -1,7 +1,7 @@
-alias a0='termux-volume music 0'
 alias a='termux-volume music 6'
 alias aa='termux-volume music 15'
 alias aaa='termux-volume music 28'
+alias az='termux-volume music 0'
 alias b='termux-brightness 30'
 alias bb='termux-brightness 70'
 alias bbb='termux-brightness 255'
