@@ -1,4 +1,8 @@
 #! /bin/bash
 
+termuxlauncherfile=`readlink ~/.bashrc.d/termuxlauncher`
+
+. $termuxlauncherfile
+
 launch `launch -l | fzf`
 
