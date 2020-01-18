@@ -87,7 +87,7 @@ set notimeout
 " Search as you type, highlight results
 set noincsearch " I find this annoying
 set noshowmatch " I find this superannoying
-set hlsearch
+set nohlsearch " I find this mildly annoying
 
 " Don't litter swp files everywhere
 set backupdir=~/.cache
@@ -97,7 +97,6 @@ set nofoldenable
 set lazyredraw
 set tags=./tags;
 set printheader=\
-nnoremap \c :noh<cr> " Clear higlighting
 " end ddevault copy
 
 let g:solarized_termcolors=256
@@ -124,9 +123,11 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
+" toggle search highlight
+nnoremap <silent> <Leader>h :set hlsearch!<CR>
+
 " toggle paste
-nnoremap <silent> <Leader>p :set paste<CR>
-nnoremap <silent> <Leader>P :set nopaste<CR>
+nnoremap <silent> <Leader>p :set paste!<CR>
 
 "Cursor settings:
 "  1 -> blinking block
@@ -176,7 +177,6 @@ nnoremap <Leader>s :SyntasticToggleMode<CR>
 " fzf
 nnoremap <Leader>f :call fzf#run({'source': 'fd .', 'sink': 'e'})<CR>
 nnoremap <Leader>g :call fzf#run({'source': 'fd . `git rev-parse --show-toplevel`', 'sink': 'e'})<CR>
-nnoremap <Leader>h :call fzf#run({'source': 'fd . ~', 'sink': 'e'})<CR>
 
 " gutentags
 let g:gutentags_enabled = 0

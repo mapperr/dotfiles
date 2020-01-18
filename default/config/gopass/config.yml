@@ -16,3 +16,4 @@ root:
   recipient_hash: {}
   safecontent: false
   usesymbols: false
+mounts: {}
