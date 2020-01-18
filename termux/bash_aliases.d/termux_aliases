@@ -1,1 +1,4 @@
-alias ee='exit'
+alias bm='termux-brightness 0'
+alias b='termux-brightness 30'
+alias bb='termux-brightness 70'
+alias bbb='termux-brightness 255'
