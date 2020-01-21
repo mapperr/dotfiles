@@ -6,9 +6,18 @@ termuxlauncherfile=`readlink ~/.bashrc.d/termuxlauncher`
 
 app_name="$1"
 
+fzfopts='+i --cycle'
+ffcmd="launch -l | rg -v '^[A-Z]' | fzf $fzfopts"
+
 if [ -z "$app_name" ]; then
-    launch `launch -l | fzf`
+    app=`eval $ffcmd`
+    test -z "$app" && exit 0
+    launch "$app"
 else
-    launch "$app_name"
+    app=`eval $ffcmd -q "^$app_name\$" -1 -0`
+    test -z "$app" \
+        && app=`eval $ffcmd -q "$app_name" -1 -0`
+    test -z "$app" && exit 0
+    launch "$app"
 fi
 
