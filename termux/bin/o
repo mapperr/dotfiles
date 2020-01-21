@@ -4,5 +4,11 @@ termuxlauncherfile=`readlink ~/.bashrc.d/termuxlauncher`
 
 . $termuxlauncherfile
 
-launch `launch -l | fzf`
+app_name="$1"
+
+if [ -z "$app_name" ]; then
+    launch `launch -l | fzf`
+else
+    launch "$app_name"
+fi
 
