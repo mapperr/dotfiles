@@ -26,6 +26,7 @@ test -r "$HOME/.bash_secrets" && . "$HOME/.bash_secrets"
 
 # MISC
 export PATH=$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.shortcuts:$PATH
+export PATH=$PATH:/home/michele/.gem/ruby/2.7.0/bin
 export EDITOR=nvim
 export XDG_CONFIG_DIR=$HOME/.config
 

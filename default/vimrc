@@ -32,6 +32,7 @@ Plugin 'tpope/vim-dadbod'
 " IDE
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'shougo/deoplete.nvim'
+Plugin 'shougo/denite.nvim'
 " Plugin 'quramy/tsuquyomi'
 
 " syntax
@@ -129,6 +130,9 @@ nnoremap <silent> <Leader>h :set hlsearch!<CR>
 " toggle paste
 nnoremap <silent> <Leader>p :set paste!<CR>
 
+" denite
+source ~/.vimrc.d/denite
+
 "Cursor settings:
 "  1 -> blinking block
 "  2 -> solid block
@@ -144,7 +148,7 @@ nnoremap <silent> <Leader>p :set paste!<CR>
 " nnoremap <silent> - :RangerCurrentFile<CR>
 map <F2> :RangerCurrentFile<CR>
 " Open ranger in current working directory
-nnoremap <silent> <Leader>r :Ranger<CR>
+" nnoremap <silent> <Leader>r :Ranger<CR>
 
 " tagbar
 nmap <F3> :TagbarToggle<CR>
@@ -160,7 +164,7 @@ set wildignore+=*.so,*.swp,*.zip
 set wildignore+=*/tmp/*,*/out/*,*/bin/*,*/obj/*,*/build/*,*/dist/*,*/node_modules/*,*/wwwroot/*,*/packages/*,*/.terraform/*
 
 " deoplete
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -176,7 +180,7 @@ nnoremap <Leader>s :SyntasticToggleMode<CR>
 
 " fzf
 nnoremap <Leader>f :call fzf#run({'source': 'fd .', 'sink': 'e'})<CR>
-nnoremap <Leader>g :call fzf#run({'source': 'fd . `git rev-parse --show-toplevel`', 'sink': 'e'})<CR>
+" nnoremap <Leader>d :call fzf#run({'source': 'fd . `git rev-parse --show-toplevel`', 'sink': 'e'})<CR>
 
 " gutentags
 let g:gutentags_enabled = 0
