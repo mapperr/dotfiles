@@ -16,11 +16,13 @@ Plugin 'vim-scripts/ingo-library'
 Plugin 'altercation/vim-colors-solarized'
 " Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/gv.vim'
 " Plugin 'scrooloose/nerdtree'
 Plugin 'lokaltog/neoranger'
 Plugin 'scrooloose/syntastic'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
@@ -30,9 +32,11 @@ Plugin 'vim-airline'
 Plugin 'tpope/vim-dadbod'
 
 " IDE
+Plugin 'valloric/youcompleteme'
 Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'shougo/deoplete.nvim'
+" Plugin 'shougo/deoplete.nvim'
 Plugin 'shougo/denite.nvim'
+" it has a ts checker for syntastic
 " Plugin 'quramy/tsuquyomi'
 
 " syntax
@@ -167,6 +171,10 @@ set wildignore+=*/tmp/*,*/out/*,*/bin/*,*/obj/*,*/build/*,*/dist/*,*/node_module
 " let g:deoplete#enable_at_startup = 1
 
 " syntastic
+nnoremap <Leader>S :SyntasticToggleMode<CR>
+nnoremap <Leader>s :SyntasticCheck<CR>
+nnoremap <Leader>E :Errors<CR>
+nnoremap <Leader>e :SyntasticReset<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -176,7 +184,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_quiet_messages = { "type": "style" }
-nnoremap <Leader>s :SyntasticToggleMode<CR>
+" let g:tsuquyomi_disable_quickfix = 1
+" let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_html_checkers = ['tidy']
+" https://vimawesome.com/plugin/youcompleteme
+let g:syntastic_java_checkers = []
 
 " fzf
 nnoremap <Leader>f :call fzf#run({'source': 'fd .', 'sink': 'e'})<CR>
@@ -197,3 +211,20 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_color_change_percent = 10
 
+" https://gist.github.com/termosa/ba60eb29500a0d3f543b
+"# NeoVim configuration
+if has("nvim")
+    "let $NVIM_TUI_ENABLE_TRUE_COLOR=1 "not sure if it is needed, it breaks Limelight
+    " Python support
+    " let g:python2_host_prog = '/usr/local/bin/python'
+    " let g:python3_host_prog = '/usr/local/bin/python3'
+    " nnoremap ti :tabnew term://zsh<CR>:setlocal nonumber<CR>:setlocal norelativenumber<CR>:startinsert<CR>
+    " nnoremap tr :TabooRename
+    nnoremap <leader>z :terminal<CR>:setlocal nonumber<CR>:setlocal norelativenumber<CR>:startinsert<CR>
+    " tnoremap <Esc> <C-\><C-n>
+    " Navigation through panes with Alt {h,j,k,l}
+    " tnoremap <A-h> <C-\><C-n><C-w>h
+    " tnoremap <A-j> <C-\><C-n><C-w>j
+    " tnoremap <A-k> <C-\><C-n><C-w>k
+    " tnoremap <A-l> <C-\><C-n><C-w>l
+endif

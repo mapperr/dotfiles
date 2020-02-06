@@ -12,4 +12,6 @@ if [ "$context" = "image" ]; then
     elif [ "$command" = "update" ]; then
         for im in `docker images | awk '{print $1,$2}' | sed 's/ /:/g'`; do echo "upgrading [$im]"; docker pull $im; done
     fi
+else
+    echo "$0 <image> <prune> | <update>"
 fi

@@ -1,5 +1,8 @@
 alias alotc='alot; clear'
 alias ff='fzf --no-mouse --no-sort --color=dark --tabstop=4'
+alias ffcd='cd `ff`'
+alias ffv='v `ff`'
+alias ffx='xdg-open `ff`'
 alias glance='glances --disable-check-update --diskio-iops --fs-free-space'
 alias gp='gopass'
 alias grep='grep --color=auto'

@@ -5,4 +5,7 @@ set commentary
 set ideajoin
 
 :map \d :action QuickJavaDoc<CR>
+:map \s :action CodeInspection.OnEditor<CR>
+:map \t :action SearchEverywhere<CR>
+:map \e :action ActivateInspectionResultsToolWindow<CR>
 

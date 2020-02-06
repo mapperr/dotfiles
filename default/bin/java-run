@@ -1,0 +1,34 @@
+#! /bin/bash
+
+jdkdir=$HOME/opt/java
+
+javaversion="$1"
+shift
+
+if [ -z "$javaversion" ]; then
+    echo "usage: $0 <java version> commands..."
+fi
+
+if [ "$javaversion" = "list" ]; then
+    ls $jdkdir
+    exit 0
+fi
+
+new_java_home="$jdkdir/$javaversion"
+
+if [ ! -d "$new_java_home" ]; then
+    echo "$new_java_home is not a directory"
+    exit 1
+fi
+
+
+export JAVA_HOME=$new_java_home
+command="$1"
+shift
+
+if [ "$command" = "java" ]; then
+    command="$JAVA_HOME/bin/java"
+fi
+
+$command $@
+
