@@ -20,7 +20,7 @@ c.tabs.last_close = 'close'
 c.url.default_page = 'about:blank'
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/html/?q={}'}
 c.url.start_pages = ['about:blank']
-c.zoom.default = '200%'
+c.zoom.default = '225%'
 c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '225%', '250%', '300%', '400%']
 
 # javascript
