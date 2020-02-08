@@ -1,8 +1,8 @@
 try
-nmap <leader>b :Denite buffer -split=floating -winrow=1<CR>
-nmap <leader>t :DeniteProjectDir file/rec<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
-nnoremap <leader>r :<C-u>DeniteCursorWord grep:.<CR>
+nmap <leader>db :Denite buffer -split=floating -winrow=1<CR>
+"nmap <leader>df :DeniteProjectDir file/rec<CR>
+nnoremap <leader>dg :<C-u>Denite grep:. -no-empty<CR>
+nnoremap <leader>dr :<C-u>DeniteCursorWord grep:.<CR>
 
 " === Denite setup ==="
 " Use ripgrep for searching current directory for files

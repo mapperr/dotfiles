@@ -22,7 +22,8 @@ Plugin 'lokaltog/neoranger'
 Plugin 'scrooloose/syntastic'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
-Plugin 'airblade/vim-gitgutter'
+" it sets a tons of mappings, its annoying
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
@@ -33,7 +34,7 @@ Plugin 'tpope/vim-dadbod'
 
 " IDE
 Plugin 'valloric/youcompleteme'
-Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'ludovicchabant/vim-gutentags'
 " Plugin 'shougo/deoplete.nvim'
 Plugin 'shougo/denite.nvim'
 " it has a ts checker for syntastic
@@ -128,14 +129,11 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
-" toggle search highlight
-nnoremap <silent> <Leader>h :set hlsearch!<CR>
-
-" toggle paste
-nnoremap <silent> <Leader>p :set paste!<CR>
+" mappings
+source ~/.vimrc.d/mappings.vim
 
 " denite
-source ~/.vimrc.d/denite
+source ~/.vimrc.d/denite.vim
 
 "Cursor settings:
 "  1 -> blinking block
@@ -145,23 +143,10 @@ source ~/.vimrc.d/denite
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-
-" neoranger
-" https://vimawesome.com/plugin/neoranger
-" Open ranger at current file with "-"
-" nnoremap <silent> - :RangerCurrentFile<CR>
-map <F2> :RangerCurrentFile<CR>
-" Open ranger in current working directory
-" nnoremap <silent> <Leader>r :Ranger<CR>
-
 " tagbar
-nmap <F3> :TagbarToggle<CR>
 let g:tagbar_compact = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
-
-" AutoFormat
-noremap <F4> :Autoformat<CR>
 
 " wildignore (considered by ctrlp and, theoretically, gutentags. But gutentags seems to ignore it)
 set wildignore+=*.so,*.swp,*.zip
@@ -171,10 +156,6 @@ set wildignore+=*/tmp/*,*/out/*,*/bin/*,*/obj/*,*/build/*,*/dist/*,*/node_module
 " let g:deoplete#enable_at_startup = 1
 
 " syntastic
-nnoremap <Leader>S :SyntasticToggleMode<CR>
-nnoremap <Leader>s :SyntasticCheck<CR>
-nnoremap <Leader>E :Errors<CR>
-nnoremap <Leader>e :SyntasticReset<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -192,14 +173,15 @@ let g:syntastic_html_checkers = ['tidy']
 " https://vimawesome.com/plugin/youcompleteme
 let g:syntastic_java_checkers = []
 
-" fzf
-nnoremap <Leader>f :call fzf#run({'source': 'fd .', 'sink': 'e'})<CR>
-" nnoremap <Leader>d :call fzf#run({'source': 'fd . `git rev-parse --show-toplevel`', 'sink': 'e'})<CR>
+" youcompleteme ycm
+let g:ycm_key_detailed_diagnostics = ''
+let g:ycm_always_populate_location_list = 1
+
 
 " gutentags
-let g:gutentags_enabled = 0
-let g:gutentags_ctags_tagfile = '.ctags'
-let g:gutentags_ctags_exclude = [ 'out', 'bin', 'obj', 'build', 'dist', 'node_modules', 'wwwroot', 'packages', '.terraform' ]
+" let g:gutentags_enabled = 0
+" let g:gutentags_ctags_tagfile = '.ctags'
+" let g:gutentags_ctags_exclude = [ 'out', 'bin', 'obj', 'build', 'dist', 'node_modules', 'wwwroot', 'packages', '.terraform' ]
 
 " indent guides
 let g:indent_guides_auto_colors = 0
@@ -211,20 +193,3 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_color_change_percent = 10
 
-" https://gist.github.com/termosa/ba60eb29500a0d3f543b
-"# NeoVim configuration
-if has("nvim")
-    "let $NVIM_TUI_ENABLE_TRUE_COLOR=1 "not sure if it is needed, it breaks Limelight
-    " Python support
-    " let g:python2_host_prog = '/usr/local/bin/python'
-    " let g:python3_host_prog = '/usr/local/bin/python3'
-    " nnoremap ti :tabnew term://zsh<CR>:setlocal nonumber<CR>:setlocal norelativenumber<CR>:startinsert<CR>
-    " nnoremap tr :TabooRename
-    nnoremap <leader>z :terminal<CR>:setlocal nonumber<CR>:setlocal norelativenumber<CR>:startinsert<CR>
-    " tnoremap <Esc> <C-\><C-n>
-    " Navigation through panes with Alt {h,j,k,l}
-    " tnoremap <A-h> <C-\><C-n><C-w>h
-    " tnoremap <A-j> <C-\><C-n><C-w>j
-    " tnoremap <A-k> <C-\><C-n><C-w>k
-    " tnoremap <A-l> <C-\><C-n><C-w>l
-endif
