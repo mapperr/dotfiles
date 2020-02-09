@@ -1,0 +1,19 @@
+#! /bin/bash
+
+selection="clipboard"
+
+command="$@"
+
+if [ "$command" = "h" ] || \
+    [ "$command" = "help" ] || \
+    [ "$command" = "-h" ] || \
+    [ "$command" = "--help" ]; then
+    echo "usage: $0 [p]"
+
+elif [ ! -z "$command" ]; then
+    $command `xclip -o -selection $selection`
+
+else
+    xclip -i -selection $selection </dev/stdin
+fi
+
