@@ -1,7 +1,9 @@
 " toggle search highlight
 nnoremap <silent> <Leader>h :set hlsearch!<CR>
 " toggle paste
-nnoremap <silent> <Leader>p :set paste!<CR>
+nnoremap <silent> <Leader>P :set paste!<CR>
+" close preview window
+nnoremap <silent> <Leader>p :pc<CR>
 " neoranger
 " https://vimawesome.com/plugin/neoranger
 " Open ranger at current file with "-"
@@ -19,10 +21,15 @@ nnoremap <Leader>se :Errors<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 " youcompleteme ycm
 nnoremap <Leader>g :YcmCompleter GoTo<CR>
+nnoremap <Leader>G :YcmCompleter GoToReferences<CR>
 nnoremap <Leader>o :YcmCompleter OrganizeImports<CR>
 nnoremap <Leader>d :YcmCompleter GetDoc<CR>
 " fzf
 nnoremap <Leader>f :call fzf#run({'source': 'fd .', 'sink': 'e'})<CR>
 " nnoremap <Leader>d :call fzf#run({'source': 'fd . `git rev-parse --show-toplevel`', 'sink': 'e'})<CR>
 nnoremap <leader>t :terminal<CR>:setlocal nonumber<CR>:setlocal norelativenumber<CR>:startinsert<CR>
-
+" denite
+nmap <leader>b :Denite buffer -split=floating -winrow=1<CR>
+"nmap <leader>df :DeniteProjectDir file/rec<CR>
+nnoremap <leader>rg :<C-u>Denite grep:. -no-empty<CR>
+nnoremap <leader>rr :<C-u>DeniteCursorWord grep:.<CR>
