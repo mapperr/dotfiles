@@ -34,7 +34,7 @@ set_wallpaper() {
 RET=0
 if [ "$command" = "on" ]; then
 
-    if [ -z "$output"]; then
+    if [ -z "$output" ]; then
         echo "no external display detected"
         exit 1
     fi
