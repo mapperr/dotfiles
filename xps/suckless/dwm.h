@@ -37,6 +37,7 @@ static const Rule rules[] = {
     {"Gimp",NULL,NULL,0,1,-1},
     {NULL,NULL,"win0",0,1,-1},
     {"Pidgin","Pidgin",NULL,0,1,-1},
+    {"Sky","sky",NULL,0,1,-1},
     {"ROX-Filer","ROX-Filer",NULL,0,1,-1},
     {"jetbrains-toolbox",NULL,NULL,0,1,-1},
     {"jetbrains-studio",NULL,NULL,0,1,-1},
