@@ -5,7 +5,7 @@ alternatecmd="$2"
 shift
 cmd="$@"
 
-basepath="$HOME/vagrantboxes"
+basepath="$HOME/vgb"
 
 
 if [ "$box" = "list" ]; then
