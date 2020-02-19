@@ -10,8 +10,10 @@ if [ "$command" = "h" ] || \
     [ "$command" = "--help" ]; then
     echo "usage: $0 [p]"
 
+elif [ "$command" = "p" ] || [ "$command" = "-p" ]; then
+    xclip -o -selection $selection
 elif [ ! -z "$command" ]; then
-    $command `xclip -o -selection $selection`
+    $command "`xclip -o -selection $selection`"
 
 else
     xclip -i -selection $selection </dev/stdin
