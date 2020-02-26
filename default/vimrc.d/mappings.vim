@@ -24,6 +24,7 @@ nnoremap <Leader>g :YcmCompleter GoTo<CR>
 nnoremap <Leader>G :YcmCompleter GoToReferences<CR>
 nnoremap <Leader>o :YcmCompleter OrganizeImports<CR>
 nnoremap <Leader>d :YcmCompleter GetDoc<CR>
+nnoremap <Leader>F :YcmCompleter FixIt<CR>
 " fzf
 nnoremap <Leader>f :call fzf#run({'source': 'fd .', 'sink': 'e'})<CR>
 " nnoremap <Leader>d :call fzf#run({'source': 'fd . `git rev-parse --show-toplevel`', 'sink': 'e'})<CR>

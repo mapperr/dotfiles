@@ -23,12 +23,7 @@ fi
 
 
 export JAVA_HOME=$new_java_home
-command="$1"
-shift
+export PATH="$JAVA_HOME/bin:$PATH"
 
-if [ "$command" = "java" ]; then
-    command="$JAVA_HOME/bin/java"
-fi
-
-$command $@
+$@
 
