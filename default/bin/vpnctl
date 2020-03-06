@@ -1,0 +1,16 @@
+#! /bin/bash
+
+prefix="$1"
+url="$1"
+user="$2"
+pass="$3"
+
+if [ -z "$user" ]; then
+    prefix=`echo $prefix | tr '[:lower:]' '[:upper:]'`
+    url=`env | grep "^${prefix}_VPN_URL" | awk -F= '{print $2}'`
+    user=`env | grep "^${prefix}_VPN_USER" | awk -F= '{print $2}'`
+    pass=`env | grep "^${prefix}_VPN_PASS" | awk -F= '{print $2}'`
+fi
+
+echo $pass | sudo openconnect -u $user $url
+
