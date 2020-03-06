@@ -34,3 +34,6 @@ nmap <leader>b :Denite buffer -split=floating -winrow=1<CR>
 "nmap <leader>df :DeniteProjectDir file/rec<CR>
 nnoremap <leader>rg :<C-u>Denite grep:. -no-empty<CR>
 nnoremap <leader>rr :<C-u>DeniteCursorWord grep:.<CR>
+
+" https://vim.fandom.com/wiki/Search_for_visually_selected_text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>

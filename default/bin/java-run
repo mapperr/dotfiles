@@ -9,7 +9,7 @@ if [ -z "$javaversion" ]; then
     echo "usage: $0 <java version> commands..."
 fi
 
-if [ "$javaversion" = "list" ]; then
+if [ "$javaversion" = "list" ] || [ "$javaversion" = "ls" ]; then
     ls $jdkdir
     exit 0
 fi
@@ -23,6 +23,7 @@ fi
 
 
 export JAVA_HOME=$new_java_home
+export JDK_HOME=$new_java_home
 export PATH="$JAVA_HOME/bin:$PATH"
 
 $@

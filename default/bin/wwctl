@@ -5,15 +5,31 @@
 context="$1"
 
 get_lan_ip() {
-    ip a show `ip l | grep " UP " | cut -d ' ' -f 2 | tr -d ':'` | grep "inet " | awk '{print $2}' | grep -o "[0-9\.]*"| head -n1
+    ip a show `ip l \
+        | grep " UP " \
+        | cut -d ' ' -f 2 \
+        | tr -d ':'` \
+        | grep "inet " \
+        | awk '{print $2}' \
+        | grep -o "[0-9\.]*" \
+        | head -n1
 }
 
 wireless_list() {
 	netctl-auto list | grep -v '^\*' | sort
 }
 
+get_interface_name_by_prefix() {
+    local prefix="$1"
+    ip link | grep "[0-9]\{1,\}: $prefix" | cut -d ' ' -f 2 | tr -d ':'
+}
+
 get_wired_interfaces() {
-    ip link | grep "[0-9]\{1,\}: en" | cut -d ' ' -f 2 | tr -d ':'
+    get_interface_name_by_prefix en
+}
+
+get_wireless_interfaces() {
+    get_interface_name_by_prefix wl
 }
 
 helpmsg() {
@@ -114,12 +130,21 @@ elif [ "$context" = "wl" ]; then
     shift
     command="$1"
 
+    interface=$WWCTL_INT
+    if [ "`get_wireless_interfaces | wc -l`" = "1" ]; then
+        interface=`get_wireless_interfaces`
+    fi
+
     if [ "$command" = "off" ]; then
-        sudo rfkill block all
+        sudo ip l set $interface down
     elif [ "$command" = "on" ]; then
+        sudo ip l set $interface up
+    elif [ "$command" = "block" ]; then
+        sudo rfkill block all
+    elif [ "$command" = "unblock" ]; then
         sudo rfkill unblock all
     elif [ "$command" = "scan" ]; then
-        sudo iw wlp2s0 scan | grep SSID
+        sudo iw wlp2s0 scan | grep 'SSID:' | sed 's/SSID://' | sed 's/^\s*//'
     elif [ "$command" = "info" ]; then
         sudo netctl-auto list | grep '*'
     elif [ "$command" = "switch" ] || [ "$command" = "sw" ]; then
@@ -144,6 +169,20 @@ elif [ "$context" = "wl" ]; then
                 counter=`expr ${counter} + 1`
             done
         fi
+    elif [ "$command" = "connect" ] || [ "$command" = "conn" ]; then
+        shift
+        wpa_supplicant_profile="$1"
+        
+        wpa_supplicant_pid=`ps -ef | grep wpa_supplicant | grep $interface | awk '{print $2}'`
+        if [ ! -z "$wpa_supplicant_pid" ]; then
+            sudo kill $wpa_supplicant_pid
+            sleep 1
+        fi
+
+        sudo wpa_supplicant -Bi $interface -c $wpa_supplicant_profile
+        sudo dhcpcd $interface
+    else
+        get_wireless_interfaces
     fi
 else
     helpmsg

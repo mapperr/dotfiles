@@ -39,3 +39,6 @@
 [gui]
 	fontui = -family \"Terminus (TTF)\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Terminus (TTF)\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+
+; notes
+; proxy config: git -c http.proxyAuthMethod basic ...proxy settings... <git commands>
