@@ -1,0 +1,26 @@
+#! /bin/bash
+
+command="$1"
+
+softether_dir="$SOFTETHER_INSTALL_DIR"
+if [ -z "$softether_dir" ] || [ ! -d $softether_dir ]; then
+    softether_dir="$HOME/opt/softether"
+fi
+
+if [ ! -d $softether_dir ]; then
+    echo "install softether!"
+    exit 1
+fi
+
+cd $softether_dir > /dev/null
+if [ "$command" = "start" ]; then
+    sudo ./vpnclient start
+elif [ "$command" = "stop" ]; then
+    sudo ./vpnclient stop
+elif [ "$command" = "cmd" ]; then
+    shift
+    ./vpncmd /CLIENT localhost /CMD $@
+else
+    echo "usage: $0 start | stop | cmd [args..]"
+fi
+

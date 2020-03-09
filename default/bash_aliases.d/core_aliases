@@ -1,6 +1,7 @@
 alias ..='cd ..'
 alias cd..='cd ..'
 alias ee='exit'
+alias envgrep='env | grep -i '
 alias jctl='journalctl'
 alias l='exa -1F'
 alias la='l -a'

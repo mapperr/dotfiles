@@ -1,16 +1,39 @@
 #! /bin/bash
 
-prefix="$1"
-url="$1"
+mode="$1"
+prefix="$2"
+host="$1"
 user="$2"
 pass="$3"
 
-if [ -z "$user" ]; then
+
+get_from_env() {
+    local envvar="$1"
+    env | grep "^${envvar}" | cut -d '=' -f2-
+}
+
+if [ "$mode" = "help" ] || [ "$mode" = "h" ] || [ "$mode" = "-h" ] || [ "$mode" = "--help" ]; then
+    echo "usage:"
+    echo "$0 conn <env_prefix> [openconnect options]"
+    echo "$0 <url> <user> <passwd> [openconnect options]"
+    exit 0
+elif [ "$mode" = "conn" ]; then
     prefix=`echo $prefix | tr '[:lower:]' '[:upper:]'`
-    url=`env | grep "^${prefix}_VPN_URL" | awk -F= '{print $2}'`
-    user=`env | grep "^${prefix}_VPN_USER" | awk -F= '{print $2}'`
-    pass=`env | grep "^${prefix}_VPN_PASS" | awk -F= '{print $2}'`
+    superprefix="${prefix}_VPN_"
+    host=`get_from_env "${superprefix}HOST"`
+    user=`get_from_env "${superprefix}USER"`
+    pass=`get_from_env "${superprefix}PASS"`
+    opts=`get_from_env "${superprefix}OPTS"`
+    shift 2
+else
+    shift 3
 fi
 
-echo $pass | sudo openconnect -u $user $url
+# proxy settings
+if [ ! -z "$HTTP_PROXY" ]; then
+    proxy_opts="-P $HTTP_PROXY"
+fi
+
+set -x
+echo $pass | sudo openconnect $proxy_opts -u $user $opts $@ $host
 
