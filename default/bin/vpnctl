@@ -12,10 +12,13 @@ get_from_env() {
     env | grep "^${envvar}" | cut -d '=' -f2-
 }
 
-if [ "$mode" = "help" ] || [ "$mode" = "h" ] || [ "$mode" = "-h" ] || [ "$mode" = "--help" ]; then
+if [ -z "$mode" ] || [ "$mode" = "help" ] || [ "$mode" = "h" ] || [ "$mode" = "-h" ] || [ "$mode" = "--help" ]; then
     echo "usage:"
     echo "$0 conn <env_prefix> [openconnect options]"
     echo "$0 <url> <user> <passwd> [openconnect options]"
+    exit 0
+elif [ "$mode" = "stop" ]; then
+    sudo killall openconnect
     exit 0
 elif [ "$mode" = "conn" ]; then
     prefix=`echo $prefix | tr '[:lower:]' '[:upper:]'`
@@ -34,6 +37,5 @@ if [ ! -z "$HTTP_PROXY" ]; then
     proxy_opts="-P $HTTP_PROXY"
 fi
 
-set -x
 echo $pass | sudo openconnect $proxy_opts -u $user $opts $@ $host
 

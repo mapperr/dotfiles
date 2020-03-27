@@ -19,7 +19,6 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/gv.vim'
 " Plugin 'scrooloose/nerdtree'
 Plugin 'lokaltog/neoranger'
-Plugin 'scrooloose/syntastic'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 " it sets a tons of mappings, its annoying
@@ -31,12 +30,15 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-airline'
 " tools
 Plugin 'tpope/vim-dadbod'
+Plugin 'easymotion/vim-easymotion'
 
 " IDE
-Plugin 'valloric/youcompleteme'
+Plugin 'neoclide/coc.nvim'
+Plugin 'scrooloose/syntastic'
+" Plugin 'valloric/youcompleteme'
 " Plugin 'ludovicchabant/vim-gutentags'
 " Plugin 'shougo/deoplete.nvim'
-Plugin 'shougo/denite.nvim'
+" Plugin 'shougo/denite.nvim'
 " it has a ts checker for syntastic
 " Plugin 'quramy/tsuquyomi'
 
@@ -132,8 +134,11 @@ let &t_EI = "\<Esc>[2 q"
 " mappings
 source ~/.vimrc.d/mappings.vim
 
+" coc
+source ~/.vimrc.d/coc.vim
+
 " denite
-source ~/.vimrc.d/denite.vim
+" source ~/.vimrc.d/denite.vim
 
 "Cursor settings:
 "  1 -> blinking block
@@ -156,26 +161,26 @@ set wildignore+=*/tmp/*,*/out/*,*/bin/*,*/obj/*,*/build/*,*/dist/*,*/node_module
 " let g:deoplete#enable_at_startup = 1
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_mode_map = { 'mode': 'passive','active_filetypes': [],'passive_filetypes': [] }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_quiet_messages = { "type": "style" }
-" let g:tsuquyomi_disable_quickfix = 1
-" let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-let g:syntastic_typescript_checkers = ['tslint']
-let g:syntastic_javascript_checkers = ['standard']
-let g:syntastic_html_checkers = ['tidy']
-" https://vimawesome.com/plugin/youcompleteme
-let g:syntastic_java_checkers = []
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_mode_map = { 'mode': 'passive','active_filetypes': [],'passive_filetypes': [] }
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_quiet_messages = { "type": "style" }
+"" let g:tsuquyomi_disable_quickfix = 1
+"" let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+" let g:syntastic_typescript_checkers = ['tslint']
+" let g:syntastic_javascript_checkers = ['standard']
+" let g:syntastic_html_checkers = ['tidy']
+"" https://vimawesome.com/plugin/youcompleteme
+" let g:syntastic_java_checkers = []
 
-" youcompleteme ycm
-let g:ycm_key_detailed_diagnostics = ''
-let g:ycm_always_populate_location_list = 1
+"" youcompleteme ycm
+" let g:ycm_key_detailed_diagnostics = ''
+" let g:ycm_always_populate_location_list = 1
 
 
 " gutentags

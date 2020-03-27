@@ -8,7 +8,7 @@ import os
 
 c.confirm_quit = ["downloads"]
 c.content.autoplay = False
-c.content.headers.user_agent = 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0'
+c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0'
 c.content.javascript.can_open_tabs_automatically = True
 c.downloads.location.directory = os.path.expanduser('~/tmp/')
 c.downloads.position = 'bottom'
@@ -65,4 +65,5 @@ config.source('theme.py')
 # bindings
 config.bind('K', 'tab-next')
 config.bind('J', 'tab-prev')
-
+config.bind(';v', 'hint links spawn --detach mpv --force-window yes --cache-secs=2000 {hint-url}')
+config.bind(';V', 'spawn --detach mpv --force-window yes --cache-secs=2000 {url}')
