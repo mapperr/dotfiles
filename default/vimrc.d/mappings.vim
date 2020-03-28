@@ -2,6 +2,8 @@
 nnoremap <silent> <Leader>h :set hlsearch!<CR>
 " toggle paste
 nnoremap <silent> <Leader>P :set paste!<CR>
+" toggle wrap
+nnoremap <silent> <Leader>w :set wrap!<CR>
 " close preview window
 nnoremap <silent> <Leader>p :pc<CR>
 " open terminal
@@ -12,21 +14,21 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " neoranger
 " https://vimawesome.com/plugin/neoranger
 " Open ranger at current file with "-"
-map <F2> :RangerCurrentFile<CR>
+map - :RangerCurrentFile<CR>
 " Open ranger in current working directory
-" nnoremap <silent> <Leader>r :Ranger<CR>
+map + :Ranger<CR>
 
 " tagbar
-nmap <F3> :TagbarToggle<CR>
+" nmap <F3> :TagbarToggle<CR>
 
 " AutoFormat
-noremap <F4> :Autoformat<CR>
+" noremap <F4> :Autoformat<CR>
 
 " syntastic
-nnoremap <Leader>sS :SyntasticToggleMode<CR>
-nnoremap <Leader>ss :SyntasticCheck<CR>
-nnoremap <Leader>se :Errors<CR>
-nnoremap <Leader>sr :SyntasticReset<CR>
+" nnoremap <Leader>sS :SyntasticToggleMode<CR>
+" nnoremap <Leader>ss :SyntasticCheck<CR>
+" nnoremap <Leader>se :Errors<CR>
+" nnoremap <Leader>sr :SyntasticReset<CR>
 
 " youcompleteme ycm
 " nnoremap <Leader>g :YcmCompleter GoTo<CR>

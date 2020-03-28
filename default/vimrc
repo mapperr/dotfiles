@@ -20,7 +20,7 @@ Plugin 'junegunn/gv.vim'
 " Plugin 'scrooloose/nerdtree'
 Plugin 'lokaltog/neoranger'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 " it sets a tons of mappings, its annoying
 "Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
@@ -34,7 +34,7 @@ Plugin 'easymotion/vim-easymotion'
 
 " IDE
 Plugin 'neoclide/coc.nvim'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 " Plugin 'valloric/youcompleteme'
 " Plugin 'ludovicchabant/vim-gutentags'
 " Plugin 'shougo/deoplete.nvim'
@@ -50,7 +50,7 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'tpope/vim-markdown'
 
 " formatting
-Plugin 'Chiel92/vim-autoformat'
+" Plugin 'Chiel92/vim-autoformat'
 
 
 call vundle#end()            " required
