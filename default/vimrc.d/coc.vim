@@ -150,14 +150,14 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
-" coc-lists extension
+" coc extensions
 " https://github.com/neoclide/coc-lists
 " Show all files.
 nnoremap <silent> <space>f  :<C-u>CocList files<cr>
+" Search most recently used files
+nnoremap <silent> <space>m  :<C-u>CocList mru<cr>
 " Show grep list.
 nnoremap <silent> <space>g  :<C-u>CocList grep<cr>
-" Show yank list.
-nnoremap <silent> <space>y  :<C-u>CocList yank<cr>
 
 " grep visually selected stuff
 vnoremap <leader>g :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
@@ -177,3 +177,8 @@ function! s:GrepFromSelected(type)
   let @@ = saved_unnamed_register
   execute 'CocList grep '.word
 endfunction
+
+" coc-yank
+" Show yank list.
+nnoremap <silent> <space>y  :<C-u>CocList yank<cr>
+
