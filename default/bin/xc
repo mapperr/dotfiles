@@ -11,11 +11,11 @@ if [ "$command" = "h" ] || \
     echo "usage: $0 [p]"
 
 elif [ "$command" = "p" ] || [ "$command" = "-p" ]; then
-    xclip -o -selection $selection
+    wl-paste
 elif [ ! -z "$command" ]; then
     $command "`xclip -o -selection $selection`"
 
 else
-    xclip -i -selection $selection </dev/stdin
+    wl-copy </dev/stdin
 fi
 
