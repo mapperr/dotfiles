@@ -83,6 +83,7 @@ static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "90x25", "-e", "screen" };
 static const char *termcmd[]  = { "st", "-e", "screen" };
 static const char *qutebrowsercmd[]  = { "qutebrowser", NULL };
+static const char *browsercmd[]  = { "xdg-open", "http://localhost:1" };
 static const char *launchercmd[] = {"rofi", "-show", "run", "-run-command", "bash -i -c '{cmd}'"};
 
 #include "movestack.c"
@@ -90,7 +91,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
     { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ MODKEY,                       XK_o,      spawn,          {.v = qutebrowsercmd } },
+	{ MODKEY,                       XK_o,      spawn,          {.v = browsercmd } },
     { MODKEY,                       XK_p,      togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = launchercmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },

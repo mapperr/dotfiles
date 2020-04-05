@@ -108,9 +108,13 @@ export SURFRAW_text_browser=w3m
 export SURFRAW_graphical=no
 export SURFRAW_new_screen=yes
 
+# jump
+# https://github.com/gsamokovarov/jump
+eval "$(jump shell)"
+
 # autojump
-AUTOJUMP_BASH=/etc/profile.d/autojump.bash
-test -r ${AUTOJUMP_BASH} && . ${AUTOJUMP_BASH}
+# AUTOJUMP_BASH=/etc/profile.d/autojump.bash
+# test -r ${AUTOJUMP_BASH} && . ${AUTOJUMP_BASH}
 
 # v
 # https://github.com/rupa/v.git

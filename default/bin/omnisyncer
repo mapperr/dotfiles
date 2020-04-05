@@ -42,20 +42,20 @@ omni_notify() {
 
 sync_offlineimap_quick() {
     hash offlineimap || return
-    omni_notify 0 'syncing offlineimap quick'
+    # omni_notify 0 'syncing offlineimap quick'
     offlineimap -q
 }
 
 sync_offlineimap() {
     hash offlineimap || return
-    omni_notify 0 'syncing offlineimap'
+    # omni_notify 0 'syncing offlineimap'
     offlineimap
     omni_notify 0 'synced offlineimap'
 }
 
 sync_vdirsyncer() {
     hash vdirsyncer || return
-    omni_notify 0 'syncing vdirsyncer'
+    # omni_notify 0 'syncing vdirsyncer'
     vdirsyncer sync
     vdirsyncer metasync
     omni_notify 0 'synced vdirsyncer'

@@ -22,7 +22,7 @@ c.tabs.last_close = 'close'
 c.url.default_page = 'about:blank'
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/html/?q={}'}
 c.url.start_pages = ['about:blank']
-c.zoom.default = '225%'
+c.zoom.default = '120%'
 c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '225%', '250%', '300%', '400%']
 
 # javascript
@@ -37,8 +37,8 @@ for site in js_whitelist:
         p.content.javascript.enabled = True
 
 # styling
-font_size = '12pt'
-monospace_font_definition = f'{font_size}  "Terminus (TTF)", "xos4 Terminus", Terminus, Monospace, "DejaVu Sans  Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier,  "Liberation Mono", monospace, Fixed, Consolas, Terminal'
+font_size = '11pt'
+monospace_font_definition = f'{font_size}  "Terminus (TTF)", "xos4 Terminus", Terminus, "Source Code Pro", Monospace, "DejaVu Sans  Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier,  "Liberation Mono", monospace, Fixed, Consolas, Terminal'
 monospace_bold_font_definition = f'bold {monospace_font_definition}'
 c.fonts.default_size = font_size
 c.fonts.default_family = monospace_font_definition

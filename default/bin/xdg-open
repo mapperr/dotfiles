@@ -1,9 +1,12 @@
 #!/bin/sh
 
+qutebrowsercmd="qutebrowser --target window"
+firefoxbrowsercmd="firefox --new-window"
+browsercmd="$firefoxbrowsercmd"
 
 case "${1%%:*}" in
 	http|https)
-		exec qutebrowser --target window "$1"
+		exec $browsercmd "$1"
 		;;
 	*.pdf)
 		exec mupdf "$1"
@@ -19,7 +22,7 @@ case "${1%%:*}" in
                 exec mupdf "$1"
 
             elif echo "$filetype" | grep "HTML document">/dev/null; then
-                mv "$1" "$1.html" && exec qutebrowser --target window "$1.html"
+                mv "$1" "$1.html" && exec $browsercmd "$1.html"
 
             elif echo "$filetype" | grep "ASCII text">/dev/null \
                 || echo "$filetype" | grep "Unicode text">/dev/null; then
