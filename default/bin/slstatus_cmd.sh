@@ -112,8 +112,10 @@ print_new_mail() {
 
 # =======
 
-print_new_mail
-print_network_info
-print_resource_utilization
-print_datetime
+newmail=`print_new_mail`
+netinfo=`print_network_info`
+resources=`print_resource_utilization`
+datetime=`print_datetime`
+
+echo -n "$newmail $netinfo $resources $datetime"
 

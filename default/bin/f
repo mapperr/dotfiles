@@ -1,0 +1,9 @@
+#! /bin/bash
+
+cd /tmp
+command="$(compgen -c | fzf)"
+if [ ! -z "$command" ]; then
+    nohup $command &
+fi
+cd - >/dev/null
+

@@ -52,7 +52,7 @@ function pasters() {
 # fzf
 # https://github.com/junegunn/fzf
 export FZF_DEFAULT_COMMAND='fd -a'
-export FZF_DEFAULT_OPTS="--no-sort --no-mouse --color=dark --tabstop=4"
+export FZF_DEFAULT_OPTS="--no-sort --no-mouse --color=dark --tabstop=4 --cycle"
 
 # QT-5
 # https://wiki.archlinux.org/index.php/qt#Configuration_of_Qt5_apps_under_environments_other_than_KDE_Plasma
@@ -65,6 +65,10 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 #export _JAVA_OPTIONS='...stuff...'
 export JAVA_HOME=$HOME/opt/jdk
 export PATH=$PATH:$JAVA_HOME/bin
+# https://wiki.archlinux.org/index.php/Java#Non-reparenting_window_managers
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS="-Djdk.gtk.version=3 -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+# _JAVA_OPTIONS='-Dsun.java2d.opengl=true' <-- this option breaks intellij platform UI drawing! Do NOT add this.
 
 # MAVEN
 export MAVEN_OPTS="-Dhttps.protocols=TLSv1.2"
